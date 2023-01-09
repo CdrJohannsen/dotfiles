@@ -28,7 +28,7 @@ gestures {
 }
 
 
-monitor=HDMI-A-1,1920x1080@60,1920x0,1
+monitor=HDMI-A-1,1920x1080@144,1920x0,1
 monitor=eDP-1,1920x1080@60,0x0,1
 
 general {
@@ -107,6 +107,9 @@ windowrule=center,floating
 windowrule=opaque,^(firefox)$
 windowrule=opaque,^(Alacritty)$
 windowrule=opaque,^(rhythmbox)$
+windowrule=noblur,Xsnow
+windowrule=move exact 0 0,Xsnow
+windowrule=pin,Xsnow
 
 bindm=SUPER,mouse:272,movewindow
 bindm=SUPER,mouse:273,resizewindow
@@ -115,6 +118,8 @@ bindm=SUPER,mouse:273,resizewindow
 bind=SUPER,Q,killactive
 bind=SUPER,T,exec,alacritty
 bind=SUPER_SHIFT,Y,exit,
+bind=SUPER_SHIFT,C,exec,hyprctl reload
+bind=SUPER_CTRL,C,exec,hyprpicker -f hex
 bind=CTRLALT,delete,exec,shutdown now
 bind=CTRLALT,backspace,exec,nwgbar -b 39393939
 bind=SUPER,W,exec,firefox
@@ -122,6 +127,7 @@ bind=SUPER,space,togglefloating
 # bindr=SUPER,SUPER_L,exec,killall -s SIGUSR1 nwggrid-server
 # bind=SUPER,S,exec,nwggrid -client
 bindr=SUPER,SUPER_L,exec,nwg-drawer
+bindr=SUPER,SUPER_R,exec,nwg-drawer
 bind=SUPER,S,exec,nwg-drawer
 bind=SUPER,P,pseudo,
 bind=SUPER_SHIFT,T,exec,gnome-calculator
@@ -227,3 +233,4 @@ exec-once=$HOME/.config/hypr/scripts/handle_monitor_connect.sh
 # exec-once=openrgb --startminimized
 exec-once=$HOME/.config/hypr/scripts/autostart.sh
 exec=nwg-drawer -r -ovl -nocats -spacing 50 -nofs
+exec=$HOME/.config/hypr/scripts/desktop-portal.sh
