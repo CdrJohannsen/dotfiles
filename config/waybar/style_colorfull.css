@@ -1,0 +1,322 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Roboto Mono Medium, Roboto, Helvetica, Arial;
+    font-size: 14px;
+    border-radius: 15px;
+    border: none;
+    /*
+    background-color: #1d1f21;
+    background: #1d1f21;
+    */
+    background-color: transparent;
+    background: transparent;
+    margin: 0px 10px 0px 10px;
+    transition-duration: 0.2s;
+    transition-property: color, background-color, border-color, background-image, padding, border-width, background;
+}
+
+window#waybar {
+    background-color: transparent /*#1d1f21*/ ;
+    color: #afafaf;
+    transition-property: background-color;
+    transition-duration: .5s;
+    border-radius: 0px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+
+window#waybar.empty {
+    background-color: transparent;
+}
+
+
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+tooltip {
+    font-family: Roboto Mono;
+    text-shadow: none;
+    color: #afafaf;
+    background: linear-gradient(45deg, rgba(61,7,64,1) 0%, rgba(45,28,90,1) 50%, rgba(31,42,154,1) 100%);
+}
+
+
+#mode {
+    background-color: #afafaf;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    color: #333333;
+}
+
+#window,
+
+#workspace {
+    margin: 5px 0px 5px 0px;
+}
+#workspaces button{
+    color: #4d4f51;
+    background-color: #baf6e5 ;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin: 0px 5px 0px 0px;
+}
+#workspaces button box{
+    margin: 0px 5px 0px 5px;
+}
+#workspaces button.active{
+    background: linear-gradient(60deg, rgba(186,246,229,1) 0%, rgba(83,233,221,1) 50%, rgba(184,144,195,1) 100%);
+    padding-right: 10px;
+    padding-left: 10px;
+}
+#workspaces button.active:hover {
+    background: linear-gradient(60deg, rgba(186,246,229,0.4) 0%, rgba(83,233,221,0.4) 50%, rgba(184,144,195,0.4) 100%);
+}
+#workspaces button:hover {
+    background-color: rgba(186,240,230,0.4) ;
+}
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+.modules-left {
+    margin: 5px 0px 5px 0px;
+}
+.modules-center {
+    margin: 5px 0px 5px 0px;
+}
+.modules-right {
+    background-color: transparent;
+    margin: 5px 0px 5px 0px;
+}
+/* If workspaces is the rightmost module, omit right margin
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+*/
+#custom-notification {
+    font-family: "NotoSansMono Nerd Font";
+    background-color: transparent;
+    padding-right: 15px;
+    padding-left: 15px;
+    color: #961481;
+}
+
+#custom-music {
+    background: linear-gradient(25deg, rgba(142,22,124,1) 0%, rgba(156,99,166,1) 50%, rgba(176,100,146,1) 100%);
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#custom-logo {
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 20px;
+    font-family: "Font Awesome 5 Free";
+    background: linear-gradient(25deg, rgba(10,5,63,1) 0%, rgba(62,8,72,1) 50%, rgba(85,11,75,1) 100%);
+}
+
+#clock {
+    font-size: 13px;
+    color: #afafaf;
+    padding-top: 3px;
+    background: linear-gradient(25deg, rgba(0,20,100,1) 0%, rgba(0,55,58,1) 50%, rgba(0,105,108,1) 100%);
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+#tray{
+    color: #afafaf;
+}
+
+#battery {
+    color: #afafaf;
+    background: linear-gradient(50deg, rgba(0,105,108,1) 0%, rgba(50,20,120,1) 50%, rgba(150,0,108,1) 100%);
+}
+#battery.critical {
+    color: #afafaf;
+    background: linear-gradient(25deg, rgba(100,0,0,1) 0%, rgba(200,00,58,1) 50%, rgba(255,105,108,1) 100%);
+    animation: blink 1s linear infinite;
+}
+
+#taskbar {
+    /* background: linear-gradient(25deg, rgba(0,55,58,1) 0%, rgba(0,105,108,1) 50%, rgba(0,255,0,1) 100%); */
+    background: rgba(255,230,210,0.7);
+}
+
+#taskbar button{
+    color: #00ffc0;
+    margin: 0 0 0 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+#taskbar button box{
+    margin: 0 0 0 0px;
+}
+/*
+window#waybar:has(> .modules-center) {
+    background: #1d1f21;
+}
+
+.modules-center > widget:only-child > #taskbar , * {
+    border-radius: 0px;
+}
+*/
+@keyframes blink {
+    from {
+        color: #660000;
+    }
+    to {
+        color: #ffffff;
+    }
+}
+
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+    color: #afafaf;
+    background: linear-gradient(45deg, rgba(150,120,50,1) 0%, rgba(150,80,50,1) 50%, rgba(150,50,150,1) 100%);
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: monospace;
+}
+
+#memory {
+    color: #afafaf;
+    background: linear-gradient(45deg, rgba(61,7,64,1) 0%, rgba(45,28,90,1) 50%, rgba(31,42,154,1) 100%);
+}
+
+#disk {
+    background-color: #afafaf
+}
+
+#backlight {
+    background-color: #90b1b1;
+}
+
+#network {
+    background-color: #2980b9;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#pulseaudio {
+    font-family: "Font Awesome 5 Free", "FontAwesome";
+    background: linear-gradient(50deg, rgba(12,4,75,1) 0%, rgba(13,30,89,1) 50%, rgba(22,67,124,1) 100%);
+    color: #afafaf;
+}
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature {
+    background-color: #f0932b;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    background: #00b093;
+    color: #740864;
+    padding: 0 5px;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    background: #97e1ad;
+    color: #000000;
+    padding: 0 0px;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}

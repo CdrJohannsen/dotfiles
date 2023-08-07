@@ -1,0 +1,128 @@
+{
+    "layer": "top",
+    "position": "top",
+    "margin-bottom": 0,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+    "height": 32,
+    "modules-left": ["sway/workspaces", "wlr/workspaces", "custom/music", "sway/mode"],
+    "modules-center": ["wlr/taskbar"],
+    "modules-right": ["cpu","memory", "pulseaudio", "battery","clock"],
+
+    "custom/logo": {
+        "format":""
+    },
+    "sway/window": {
+        "max-length": 50
+    },
+    "wlr/workspaces": {
+        "format": "{name}",
+        "format-active": " {name} ",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+    "tray":{
+        "icon-size": 15,
+        "show-passive-items": true
+    },
+    "battery": {
+        "format": "{capacity}%",
+        "format-discharging": "{capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "format-full": "",
+        "states": {
+            "critical": 15
+        }
+    },
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "format-alt": " {:%a, %d. %b\n   %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} ",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+    },
+    "memory": {
+        "format": "{}% ",
+        "interval": 1,
+        "format-icons": ["▏", "▎", "▍", "▌", "▋", "▊", "▉", "█","█▏", "█▎", "█▍", "█▌", "█▋", "█▊", "█▉", "██", "██▏", "██▎", "██▍", "██▌", "██▋", "██▊", "██▉", "███","██▏", "███▎", "███▍", "███▌", "███▋", "███▊", "███▉", "████"],
+        "min-length": 5
+    },
+    "pulseaudio": {
+        "format": "   {icon}   ",
+        "format-muted": "      ",
+        "format-icons": ["","",""]
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "all-outputs": false,
+        "ignore-list": ["Alacritty"],
+        "icon-size": 20,
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "⬤",
+            "none": "",
+            "dnd-notification": "",
+            "dnd-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "on-click-middle": "swaync-client -C -sw",
+        "escape": true
+    },
+    "custom/music_prev": {
+        "format": "⏮",
+        "tooltip": false,
+        "on-click": "playerctl previous"
+    },
+    "custom/music_back": {
+        "format": "⏴",
+        "tooltip": false,
+        "on-click": "playerctl position 10-"
+    },
+    "custom/music_playing": {
+        "format": "{}",
+        "tooltip": false,
+        "interval": 5,
+        "exec": "$HOME/.config/waybar/modules/music_playing.sh",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl stop"
+    },
+    "custom/music_forward": {
+        "format": "⏵",
+        "tooltip": false,
+        "on-click": "playerctl position 10+"
+    },
+    "custom/music_next": {
+        "format": "⏭",
+        "tooltip": false,
+        "on-click": "playerctl next"
+    },
+    "custom/music": {
+        "format": " {}",
+        "tooltip": true,
+        "exec": "playerctl metadata -F --format '{\"text\":\"{{title}}\", \"tooltip\": \"{{artist}} - {{default(album,\"§§§\")}}\"}' | sed -u -e 's/.mp3//g' -e 's/ - Unknown//g' -e 's/ - §§§//g'",
+        "on-scroll-up": "amixer set Master 5%+",
+        "on-scroll-down": "amixer set Master 5%-",
+        "on-click": "playerctl play-pause",
+        "return-type": "json",
+        "escape": true,
+	"on-click-middle": "playerctl stop"
+    }
+}
