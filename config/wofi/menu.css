@@ -1,0 +1,66 @@
+/* # By knightfall01 on Github as a part of https://github.com/Knightfall01/Hyprland-config */
+/* Modified by me */
+
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  /* color: #c4d3da; */
+}
+
+window {
+  /* border: 3px solid @accent_bg_color; */
+  /* background: #1e2030; */
+  background: transparent;
+  border-radius: 15px;
+}
+
+#input {
+  margin: 1.5em;
+  margin-bottom: 0em;
+  padding: 1em;
+  border: none;
+  font-weight: bold;
+  /* background: #1e2030; */
+  /* color: #c4d3da; */
+  border-radius: 15px;
+}
+
+#inner-box {
+  margin: 1.5em;
+  margin-top: 0.5em;
+}
+
+#outer-box {
+  border: 3px solid @border_color;
+  border-radius: 15px;
+  margin-bottom: 0.5em;
+  margin: 20px 20px 20px 20px;
+  padding: 5px 5px 5px 5px;
+  box-shadow: 0px 0px 10px @accent_bg_color;
+  background: @window_bg_color;
+}
+
+#scroll {
+  margin-top: 5px;
+  /* display: none; */
+}
+
+#text {
+  margin-left: 0.5em;
+  /* color: #c4d3da; */
+}
+
+#text:selected {
+  /* color: #16161e; */
+}
+
+#entry {
+  margin-top: 0.5em;
+  border-radius: 15px;
+}
+
+#entry:selected {
+  background: linear-gradient(90deg, @accent_color 0%, @accent_bg_color 80%);
+  outline: none;
+  box-shadow: 0px 0px 5px @accent_color;
+}
