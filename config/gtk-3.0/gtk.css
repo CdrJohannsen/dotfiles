@@ -1,5 +1,5 @@
-@define-color accent_color rgb(80,175,175);
-@define-color accent_bg_color rgb(0,175,175);
+@define-color accent_color #f5c211;
+@define-color accent_bg_color #e5a50a;
 @define-color accent_fg_color #ffffff;
 @define-color destructive_color #ff7b63;
 @define-color destructive_bg_color #c01c28;
@@ -13,11 +13,11 @@
 @define-color error_color #ff7b63;
 @define-color error_bg_color #c01c28;
 @define-color error_fg_color #ffffff;
-@define-color window_bg_color rgb(20,20,20);
+@define-color window_bg_color #100a00;
 @define-color window_fg_color #ffffff;
-@define-color view_bg_color rgb(31,31,31);
+@define-color view_bg_color rgb(31,23,15);
 @define-color view_fg_color #ffffff;
-@define-color headerbar_bg_color rgb(10,10,10);
+@define-color headerbar_bg_color #080200;
 @define-color headerbar_fg_color #ffffff;
 @define-color headerbar_border_color rgb(255,255,255);
 @define-color headerbar_backdrop_color @window_bg_color;
@@ -25,9 +25,9 @@
 @define-color card_bg_color rgba(255,255,255,0.04);
 @define-color card_fg_color #ffffff;
 @define-color card_shade_color rgba(0, 0, 0, 0.36);
-@define-color dialog_bg_color rgb(29,29,29);
+@define-color dialog_bg_color rgb(29,20,15);
 @define-color dialog_fg_color #ffffff;
-@define-color popover_bg_color rgb(29,29,29);
+@define-color popover_bg_color rgb(29,20,15);
 @define-color popover_fg_color #ffffff;
 @define-color shade_color rgba(0,0,0,0.36);
 @define-color scrollbar_outline_color rgba(0,0,0,0.5);
@@ -116,24 +116,40 @@
 @define-color dark_3 #3d3846;
 @define-color dark_4 #241f31;
 @define-color dark_5 #000000;
+@define-color border_focused_color #ffeedd;
+@define-color border_color #ffddaa;
+
 .titlebar,
 window {
-	border-radius: 0;
 	box-shadow: none;
 }
+
 button.suggested-action {
-	box-shadow: 0px 0px 10px rgb(0,175,175);
+	box-shadow: 0px 0px 10px @accent_bg_color;
 }
+
+button:disabled{
+	box-shadow: 0px 0px 0px;
+}
+
 button.warning{
 	filter: drop-shadow(0px 0px 5px currentcolor);
 }
 
 switch:checked{
-
-	box-shadow: 0px 0px 10px rgb(0,175,175);
-
+	box-shadow: 0px 0px 10px @accent_bg_color;
 }
-#input-field {
-	border-color: rgb(0,175,175);
-	box-shadow: 0px 0px 5px rgb(0,175,175);
+
+entry {
+	border: 2px solid @accent_bg_color;
+}
+
+entry:focus {
+	border: 2px solid @border_focused_color;
+	box-shadow: 0px 0px 5px @accent_color;
+}
+
+/* SwayOSD */
+.osd {
+	border-radius:40px;
 }

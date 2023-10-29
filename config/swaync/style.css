@@ -1,18 +1,8 @@
 /*
  * vim: ft=less
  */
+@import "colors.css";
 
-@define-color cc-bg rgba(0, 0, 0, 0.7);
-
-@define-color noti-border-color rgba(69,133,136, 1);
-@define-color noti-border-actions rgba(39,39,39, 1);
-@define-color noti-bg rgb(51,51,51);
-@define-color noti-bg-hover rgb(67, 67, 67);
-@define-color noti-bg-focus rgba(68, 68, 68, 0.6);
-@define-color noti-close-bg rgba(255, 255, 255, 0.1);
-@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
-
-@define-color bg-selected rgb(69,133,136);
 
 .notification-row {
   outline: none;
@@ -25,8 +15,9 @@
 
 .notification {
   border-radius: 10px;
-  margin: 6px 12px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+  margin: 12px 12px;
+  /*box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);*/
+  box-shadow: 0px 0px 7px @bg-selected;
   padding: 0;
 }
 
@@ -163,7 +154,8 @@
 .control-center {
   background: @noti-border-actions;
   border-radius: 10px;
-  border: 2px solid rgb(30,30,30)
+  border: 2px solid @noti-border-color;
+  box-shadow: 0px 0px 10px @bg-selected;
 }
 
 .control-center-list {
@@ -176,7 +168,8 @@
 
 /* Window behind control center and on all other monitors */
 .blank-window {
-  background: alpha(black, 0.25);
+  /* background: alpha(black, 0.25); */
+  background: transparent;
 }
 
 /*** Widgets ***/

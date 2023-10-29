@@ -1,0 +1,299 @@
+$WOBSOCK=$XDG_RUNTIME_DIR/wob.sock
+monitor=,1920x1080@60,0x0,1
+
+exec=rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+
+input {
+    sensitivity=1.0 # for mouse cursor
+    kb_layout=de(nodeadkeys)
+    kb_variant=
+    kb_model=
+    kb_options=lv3:caps_switch,compose:ralt,nbsp:zwnj3zwj4,keypad:oss,kpdl:commaoss
+    kb_rules=
+    numlock_by_default=1
+
+    force_no_accel=1
+    follow_mouse=2
+    float_switch_override_focus=2
+
+    touchpad {
+        disable_while_typing=0
+        natural_scroll=1
+        drag_lock=1
+    }
+}
+
+gestures {
+    workspace_swipe=1
+}
+
+
+monitor=HDMI-A-1,1920x1080@144,1920x0,1
+monitor=DP-1,1920x1080@144,1920x0,1
+monitor=eDP-1,1920x1080@60,0x0,1
+
+general {
+    gaps_in=5
+    gaps_out=20
+    border_size=2
+    #col.active_border=0xff458588
+    #col.active_border=0xffb5c0ff 0xffb5ffc0
+    col.active_border=0xa0b5c0ff 0xff55ff60
+    #col.inactive_border=0xff282828
+    col.inactive_border=0xff95b5ff
+    
+    cursor_inactive_timeout=20
+
+    apply_sens_to_raw=0 # whether to apply the sensitivity to raw input (e.g. used by games where you aim using your mouse)
+}
+
+group {
+    col.border_active=0xa055bb60
+    col.border_inactive=0xa095b5ff
+    groupbar {
+        gradients=false
+        render_titles=false
+        col.active=0xa055bb60
+        col.inactive=0xa095b5ff
+    }
+
+}
+
+decoration {
+    rounding=10
+
+    blur {
+        enabled=1
+        size=5 # minimum 1
+        passes=2 # minimum 1, more passes = more resource intensive.
+        new_optimizations=1
+    }
+    # inactive_opacity=0.8
+    drop_shadow = true
+    shadow_range=20
+    shadow_render_power=3
+    #shadow_render_power=4
+    #col.shadow=0xff4575d8
+    col.shadow=0xff55e5e8
+    #col.shadow_inactive=0x00000000
+    col.shadow_inactive=0xff55a5e8
+    #screen_shader=~/.config/hypr/shaders/color_test.frag
+}
+blurls=~nwggrid
+blurls=~nwgbar
+#blurls=gtk-layer-shell
+
+animations {
+    enabled=1
+    bezier=sfs,0.27,0.18,0.06,0.92
+    bezier=linear,1.00,1.00,0.00,0.00
+    bezier=overshot,0.16,1.02,0.6,1.2
+    #animation=windows,1,5,default,slide
+    animation=windows,1,5,default,popin 90%
+    animation=border,1,10,default
+    animation=fade,1,5,default
+    animation=workspaces,1,3,sfs,slide
+    animation=borderangle,1,50,linear,loop
+}
+
+misc {
+    animate_manual_resizes=1
+    animate_mouse_windowdragging=0
+    disable_splash_rendering=0
+    mouse_move_enables_dpms=1
+    key_press_enables_dpms=1
+    layers_hog_keyboard_focus=1
+}
+
+dwindle {
+    pseudotile=1
+    no_gaps_when_only=true
+    preserve_split=1
+}
+
+xwayland {
+    force_zero_scaling=0
+}
+
+debug {
+    overlay=0
+    damage_tracking=1
+}
+
+plugin {
+
+}
+
+bind=SUPER,A,togglesplit
+bind=SUPER,E,togglegroup
+bind=SUPER_SHIFT,Tab,changegroupactive,b
+bind=SUPER,Tab,changegroupactive,f
+
+windowrule=center,floating
+windowrule=opaque,^(firefox)$
+windowrule=opaque,^(Alacritty)$
+windowrule=opaque,^(rhythmbox)$
+windowrule=noblur,Xsnow
+windowrule=move exact 0 0,Xsnow
+windowrule=pin,Xsnow
+
+bindm=SUPER,mouse:272,movewindow
+bindm=SUPER,mouse:273,resizewindow
+
+
+bind=SUPER,Q,killactive
+bind=SUPER,T,exec,alacritty
+bind=SUPER_SHIFT,Y,exit,
+bind=SUPER_SHIFT,C,exec,hyprctl reload
+bind=SUPER_CTRL,C,exec,hyprpicker -f hex
+bind=CTRLALT,delete,exec,shutdown now
+bind=CTRLALT,backspace,exec,nwg-bar
+bind=SUPER,W,exec,firefox
+bind=SUPER,space,togglefloating
+# bindr=SUPER,SUPER_L,exec,killall -s SIGUSR1 nwggrid-server
+# bind=SUPER,S,exec,nwggrid -client
+bindr=SUPER,SUPER_L,exec,killall wofi || wofi -s .config/wofi/menu.css
+bindr=SUPER,SUPER_R,exec,killall wofi || wofi -s .config/wofi/menu.css
+bind=SUPER,S,exec,nwg-drawer
+bind=SUPER,P,pseudo,
+bind=SUPER_SHIFT,T,exec,gnome-calculator
+bind=SUPER,period,exec,gnome-characters
+bind=SUPER,L,exec,gtklock
+bind=SUPER,K,exec,~/.config/hypr/scripts/toggle_mode.sh
+
+bindl=,switch:Lid Switch,exec,gtklock
+
+# bind=,XF86AudioMute,exec,amixer sset Master toggle & echo 0 > $WOBSOCK
+bind=,XF86AudioMute,exec,swayosd --output-volume mute-toggle
+#binde=,XF86AudioLowerVolume,exec,amixer sset Master 256- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+#binde=,XF86AudioRaiseVolume,exec,amixer sset Master 256+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $WOBSOCK
+binde=,XF86AudioRaiseVolume,exec,swayosd --output-volume +1
+binde=,XF86AudioLowerVolume,exec,swayosd --output-volume -1
+bind=SUPER,F4,exec,swayosd --input-volume mute-toggle
+bind=,XF86AudioNext,exec,playerctl next
+bind=,XF86AudioPrev,exec,playerctl previous
+binde=CTRL,XF86AudioNext,exec,playerctl position 5+
+binde=CTRL,XF86AudioPrev,exec,playerctl position 5-
+binde=CTRL_SHIFT,XF86AudioNext,exec,playerctl position 20+
+binde=CTRL_SHIFT,XF86AudioPrev,exec,playerctl position 20-
+bind=,XF86AudioPlay,exec,playerctl play-pause
+bind=,XF86AudioStop,exec,playerctl stop
+
+bind=,num_lock,exec,sleep 0.1 && swayosd --num-lock
+
+binde=SUPERSHIFT,up,exec,brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+binde=SUPERSHIFT,down,exec,brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK
+
+bind=SUPER_SHIFT,S,exec,grimshot copy area
+bind=,Print,exec,grimshot copy active
+bind=SUPER,Print,exec,grimshot copy output
+
+bind=SUPER,F,fullscreen,0
+
+#bind=SUPER,H,togglefloating,active
+#bind=SUPER,H,moveactive,exact 0 32
+#bind=SUPER,H,resizeactive,exact 3840 1048
+
+bind=SUPER,G,exec,~/.config/hypr/scripts/maximize.sh
+
+binde=SUPER,left,movefocus,l
+binde=SUPER,right,movefocus,r
+binde=SUPER,up,movefocus,u
+binde=SUPER,down,movefocus,d
+
+binde=SUPERCTRL,left,movewindow,l
+binde=SUPERCTRL,right,movewindow,r
+binde=SUPERCTRL,up,movewindow,u
+binde=SUPERCTRL,down,movewindow,d
+
+binde=SUPER_SHIFT,left,movecurrentworkspacetomonitor,eDP-1
+binde=SUPER_SHIFT,right,movecurrentworkspacetomonitor,HDMI-A-1
+
+bind=SUPER,1,workspace,1
+bind=SUPER,2,workspace,2
+bind=SUPER,3,workspace,3
+bind=SUPER,4,workspace,4
+bind=SUPER,5,workspace,5
+bind=SUPER,6,workspace,6
+bind=SUPER,7,workspace,7
+bind=SUPER,8,workspace,8
+bind=SUPER,9,workspace,9
+bind=SUPER,0,togglespecialworkspace
+
+bind=SUPER_SHIFT,1,movetoworkspace,1
+bind=SUPER_SHIFT,2,movetoworkspace,2
+bind=SUPER_SHIFT,3,movetoworkspace,3
+bind=SUPER_SHIFT,4,movetoworkspace,4
+bind=SUPER_SHIFT,5,movetoworkspace,5
+bind=SUPER_SHIFT,6,movetoworkspace,6
+bind=SUPER_SHIFT,7,movetoworkspace,7
+bind=SUPER_SHIFT,8,movetoworkspace,8
+bind=SUPER_SHIFT,9,movetoworkspace,9
+bind=SUPER_SHIFT,0,movetoworkspace,special
+
+bind=SUPER,mouse_down,workspace,e+1
+bind=SUPER,mouse_up,workspace,e-1
+
+bind=SUPER,V,submap,resize
+submap=resize
+binde=,right,resizeactive,10 0
+binde=,left,resizeactive,-10 0
+binde=,up,resizeactive,0 -10
+binde=,down,resizeactive,0 10
+bind=,escape,submap,reset
+submap=reset
+
+# rules
+windowrule=workspace 9,discord
+windowrule=workspace 9,Signal
+windowrule=workspace 9,thunderbird
+windowrule=group,discord
+windowrule=group,Signal
+windowrule=group,thunderbird
+windowrule=idleinhibit focus,discord
+windowrule=idleinhibit fullscreen,firefox
+windowrule=idleinhibit always,firefox
+windowrule=workspace 2,^(.*inecraft.*)$
+windowrule=workspace 2,^(.*Steam.*)$
+windowrule=workspace 2,^(.*steam.*)$
+windowrule=workspace 2,^(.*csgo.*)$
+windowrule=moveintogroup 9,thunderbird
+windowrule=fullscreen,Minecraft 1.8.9
+windowrule=forcergbx,org.kde.kdenlive
+windowrule=forcergbx,FreeCAD
+
+windowrule=float, com-group_finity-mascot-Main
+windowrule=noblur, com-group_finity-mascot-Main
+windowrule=nofocus, com-group_finity-mascot-Main
+windowrule=noshadow, com-group_finity-mascot-Main
+windowrule=noborder, com-group_finity-mascot-Main
+windowrule=windowdance, com-group_finity-mascot-Main
+
+windowrulev2 = opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$
+windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+windowrulev2 = nofocus,class:^(xwaylandvideobridge)$
+windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+
+# envs
+env = _JAVA_AWT_WM_NONREPARENTING,1
+env = XCURSOR_SIZE,24
+env = QT_QPA_PLATFORMTHEME,'gnome'
+env = SDL_VIDEODRIVER,wayland
+env = GTK_THEME,adw-gtk3-dark
+# env = GDK_BACKEND,wayland,x11
+# env = QT_QPA_PLATFORM,"wayland;xcb"
+# env = GTK_THEME,'adw-gtk3-dark'
+
+# autostart
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
+# exec-once=$HOME/.config/hypr/scripts/handle_monitor_connect.sh
+# exec-once=hyprpaper
+# exec-once=openrgb --startminimized
+exec-once=$HOME/.config/hypr/scripts/autostart.sh
+exec=nwg-drawer -r -ovl -nocats -spacing 50 -nofs
+# exec-once=$HOME/.config/hypr/scripts/desktop-portal.sh
+exec-once=xhost +
+exec-once=swayosd --top-margin=0.95

@@ -71,4 +71,5 @@ if [ $TERM != "linux" ]; then
 fi
 
 #startup
-fortune | cowsay
+#cat ~/.gnu_linux
+fortune -s | cowsay

@@ -1,7 +1,9 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "center",
+  "positionX": "right",
   "positionY": "top",
+  "control-center-positionX": "none",
+  "control-center-positionY": "top",
   "control-center-margin-top": 3,
   "control-center-margin-bottom": 0,
   "control-center-margin-right": 0,
@@ -9,10 +11,11 @@
   "notification-icon-size": 64,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
+  "notification-inline-replies": true,
   "timeout": 5,
   "timeout-low": 2,
   "timeout-critical": 0,
-  "fit-to-screen": false,
+  "fit-to-screen": true,
   "control-center-width": 400,
   "control-center-height": 600,
   "keyboard-shortcuts": true,
@@ -20,9 +23,29 @@
   "notification-window-height": 400,
   "image-visibility": "when-available",
   "transition-time": 200,
-  "hide-on-clear": false,
+  "hide-on-clear": true,
   "hide-on-action": true,
   "script-fail-notify": true,
-  "scripts": {
-  }
+  "notification-visibility": {
+      "make-bot-transient": {
+          "state": "transient",
+          "app-name": "discord",
+          "summary": ".*Musik Bot .*",
+          "body": ".*"
+      },
+      "mute-empty-bot-messages": {
+          "state": "ignored",
+          "app-name": "discord",
+          "summary": ".*Musik Bot .*"
+      },
+      "make-rhythmbox-transient": {
+          "state": "transient",
+          "app-name": "Rhythmbox"
+      }
+  },
+  "widgets":[   "inhibitors",
+                "title",
+                "notifications",
+                "mpris",
+                "volume"]
 }

@@ -10,15 +10,15 @@ void main() {
     float tcy = tc.x*16.0+time*1.0;
     
     // calculate new coordinates
-    // tc.y += cos(tcy)*0.05;
-    // tc.x += cos(tcx)*0.05;
+    tc.y += cos(tcy)*0.05;
+    tc.x += cos(tcx)*0.05;
     
     // get color of the new coordinates
     vec4 cta = texture2D(tex, vec2(tc.x, tc.y));
 
-    cta.r += cos(tcy)*0.1;
-    cta.g += cos(tcx)*0.1;
-    cta.b += sin(tcx)*0.1;
+    // cta.r += cos(tcy)*0.1;
+    // cta.g += cos(tcx)*0.1;
+    // cta.b += sin(tcx)*0.1;
 
     // Cutoff
     if(tc.y < 0.0 || tc.y > 1.0 || tc.x < 0.0 || tc.x > 1.0)

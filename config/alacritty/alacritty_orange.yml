@@ -1,0 +1,54 @@
+window:
+  dimensions:
+    columns: 100
+    lines: 24
+  opacity: 0.8
+  decorations: None
+font:
+  size: 11
+  builtin_box_drawing: true
+  normal:
+    family: DejaVuSansMono Nerd Font
+    style: Regular
+  bold:
+    family: DejaVuSansMono Nerd Font
+    style: Bold
+  italic:
+    family: DejaVuSansMono Nerd Font
+    style: Oblique
+  glyph_offset:
+    x: 0
+    y: 0
+scrolling:
+  history: 10000
+  multiplier: 3
+custom_cursor_colors: true
+draw_bold_text_with_bright_colors: false
+
+colors:
+  primary:
+    background: '#1d150c'
+    foreground: '#c5c8b0'
+  normal:
+        black:   '0xc5c8b0'
+        red:     '0xc82815'
+        green:   '0xa0af64'
+        yellow:  '0xeab700'
+        blue:    '0xd05f2f'
+        magenta: '0xa93988'
+        cyan:    '0xaf7f3f'
+        white:   '0x4d4d4c'
+
+key_bindings:
+  - { Key: V,     mods: Control,      action: Paste         }
+  - { Key: C,     mods: Control,      action: Copy          }
+  - { Key: Q,     mods: Control,      action: Quit          }
+  - { Key: N,     mods: Control,      action: SpawnNewInstance}
+  - { Key: C,     mods: Control|Shift,chars: "\x03"         }
+
+
+cursor:
+  style: Beam
+  unfocused_hollow: true
+  live_config_reload: true
+

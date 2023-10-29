@@ -7,7 +7,7 @@
  mode = normal
 
 # Accepts only non-negative values.
-; framerate = 60
+framerate = 60
 
 # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
 # new as of 0.6.0 autosens of low values (dynamic range)
@@ -149,8 +149,8 @@ bit_format = 16
 ; foreground = default
 
 # SDL only support hex code colors, these are the default:
-; background = '#111111'
-; foreground = '#33cccc'
+# background = '#111111'
+# foreground = '#33cccc'
 
 
 # Gradient mode, only hex defined colors are supported,
@@ -158,10 +158,10 @@ bit_format = 16
 # You can define as many as 8 different colors. They range from bottom to top of screen
  gradient = 1
  gradient_count = 2
- gradient_color_1='#005558'
- gradient_color_2='#00b5b8'
- ;gradient_color_1='#550000'
- ;gradient_color_2='#aa0000'
+ gradient_color_1='#e5a50a'
+ gradient_color_2='#f5c211'
+ #gradient_color_1='#550000'
+ #gradient_color_2='#aa0000'
 
 
 [smoothing]

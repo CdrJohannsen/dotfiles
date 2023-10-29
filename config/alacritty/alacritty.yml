@@ -5,10 +5,17 @@ window:
   opacity: 0.8
   decorations: None
 font:
+  size: 11
   builtin_box_drawing: true
   normal:
-    family: DejaVu Sans Mono Nerd Font
+    family: DejaVuSansMono Nerd Font
     style: Regular
+  bold:
+    family: DejaVuSansMono Nerd Font
+    style: Bold
+  italic:
+    family: DejaVuSansMono Nerd Font
+    style: Oblique
   glyph_offset:
     x: 0
     y: 0
@@ -19,14 +26,17 @@ custom_cursor_colors: true
 draw_bold_text_with_bright_colors: false
 
 colors:
+  primary:
+    background: '#1d150c'
+    foreground: '#c5c8b0'
   normal:
-        black:   '0xffffff'
-        red:     '0xc82829'
-        green:   '0x718c00'
+        black:   '0xc5c8b0'
+        red:     '0xc82815'
+        green:   '0xa0af64'
         yellow:  '0xeab700'
-        blue:    '0x4271ae'
-        magenta: '0x8959a8'
-        cyan:    '0x458588'
+        blue:    '0xd05f2f'
+        magenta: '0xa93988'
+        cyan:    '0xaf7f3f'
         white:   '0x4d4d4c'
 
 key_bindings:

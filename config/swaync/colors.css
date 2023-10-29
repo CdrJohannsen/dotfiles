@@ -1,0 +1,12 @@
+
+@define-color cc-bg rgba(0, 0, 0, 0.7);
+
+@define-color noti-border-color @border_color;
+@define-color noti-border-actions @dialog_bg_color;
+@define-color noti-bg @window_bg_color;
+@define-color noti-bg-hover @view_bg_color;
+@define-color noti-bg-focus rgba(68, 68, 68, 0.6);
+@define-color noti-close-bg rgba(255, 255, 255, 0.1);
+@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
+
+@define-color bg-selected @accent_bg_color;
