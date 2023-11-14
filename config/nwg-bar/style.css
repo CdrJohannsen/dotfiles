@@ -1,0 +1,42 @@
+window {
+        background-color: transparent;
+}
+
+/* Outer bar container, takes all the window width/height */
+#outer-box {
+	background-color: @window_bg_color;
+	margin: 20px;
+    border: 3px solid @border_color;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px @accent_bg_color;
+}
+
+/* Inner bar container, surrounds buttons */
+#inner-box {
+	padding: 5px;
+	margin: 5px
+}
+
+button, image {
+	background: none;
+	border: none;
+	box-shadow: none
+}
+
+button {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 5px
+}
+
+button:focus {
+    background: linear-gradient(90deg, @accent_color 0%, @accent_bg_color 80%);
+}
+
+button:hover {
+    background: @view_bg_color;
+}
+
+button:hover:focus {
+    background: @accent_color;
+}

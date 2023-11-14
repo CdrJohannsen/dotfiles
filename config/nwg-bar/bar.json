@@ -1,0 +1,27 @@
+[
+  {
+    "label": "Suspend",
+    "exec": "/home/cdr-johannsen/.config/nwg-launchers/nwgbar/suspend.sh",
+    "icon": "/usr/share/nwg-bar/images/system-suspend.svg"
+  },
+  {
+    "label": "Lock",
+    "exec": "gtklock",
+    "icon": "/usr/share/nwg-bar/images/system-lock-screen.svg"
+  },
+  {
+    "label": "Logout",
+    "exec": "wayland-logout",
+    "icon": "/usr/share/nwg-bar/images/system-log-out.svg"
+  },
+  {
+    "label": "Reboot",
+    "exec": "systemctl reboot",
+    "icon": "/usr/share/nwg-bar/images/system-reboot.svg"
+  },
+  {
+    "label": "Shutdown",
+    "exec": "shutdown now",
+    "icon": "/usr/share/nwg-bar/images/system-shutdown.svg"
+  }
+]
