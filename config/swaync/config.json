@@ -41,6 +41,10 @@
       "make-rhythmbox-transient": {
           "state": "transient",
           "app-name": "Rhythmbox"
+      },
+      "make-spotify-transient": {
+          "state": "transient",
+          "desktop_entry": "com.spotify.Client"
       }
   },
   "widgets":[   "inhibitors",
