@@ -70,8 +70,8 @@
         "min-length": 5
     },
     "pulseaudio": {
-        "format": "   {icon}   ",
-        "format-muted": "      ",
+        "format": "  {icon}  ",
+        "format-muted": "  󰝟  ",
         "format-icons": ["","",""]
     },
     "wlr/taskbar": {
