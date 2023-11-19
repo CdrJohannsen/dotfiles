@@ -6,14 +6,14 @@ autocmd("VimResized", {
   command = "tabdo wincmd =",
 })
 -- Set glsl highlighting for shaders
- autocmd("BufRead, BufNewFile", {
-   pattern = "*.frag,*.vert,*.fp,*.vp,*.glsl",
-   command = "setf glsl",
- })
- autocmd("BufRead, BufNewFile", {
-   pattern = "hyprland.conf",
-   command = "setf hyprland",
- })
+-- autocmd("BufRead, BufNewFile", {
+--   pattern = "*.frag,*.vert,*.fp,*.vp,*.glsl",
+--   command = "setf glsl",
+-- })
+-- autocmd("BufRead, BufNewFile", {
+--   pattern = "hyprland.conf",
+--   command = "setf hyprland",
+-- })
 local opt = vim.opt
 
 opt.tabstop = 4

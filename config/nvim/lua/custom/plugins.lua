@@ -87,6 +87,34 @@ local plugins = {
         }
     },
 
+    {
+        "hrsh7th/nvim-cmp",
+        opts = function()
+            local cmp_conf = require "plugins.configs.cmp"
+            table.insert(cmp_conf, "doxygen")
+            cmp_conf.mapping["<Down>"] = cmp_conf.mapping["<Tab>"]
+            cmp_conf.mapping["<Up>"] = cmp_conf.mapping["<S-Tab>"]
+            cmp_conf.mapping["<Tab>"] = cmp_conf.mapping["<CR>"]
+
+            return cmp_conf
+    end,
+        dependencies = {
+            "paopaol/cmp-doxygen"
+        }
+    },
+
+    {
+        "paopaol/cmp-doxygen",
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter-textobjects"
+        },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter/nvim-treesitter-textobjects"
+        }
+    },
+
     -- To make a plugin not be loaded
     -- {
     --   "NvChad/nvim-colorizer.lua",
