@@ -1,0 +1,75 @@
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.normal]
+black = "0xffffff"
+blue = "0x006faf"
+cyan = "0x00afaf"
+green = "0x00af64"
+magenta = "0x8939a8"
+red = "0xc82829"
+white = "0x4d4d4c"
+yellow = "0xeab700"
+
+[cursor]
+style = "Beam"
+unfocused_hollow = true
+
+[font]
+builtin_box_drawing = true
+size = 11
+
+[font.bold]
+family = "DejaVuSansMono Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "DejaVuSansMono Nerd Font"
+style = "Oblique"
+
+[font.normal]
+family = "DejaVuSansMono Nerd Font"
+style = "Regular"
+
+[[keyboard.bindings]]
+Key = "V"
+action = "Paste"
+mods = "Control"
+
+[[keyboard.bindings]]
+Key = "C"
+action = "Copy"
+mods = "Control"
+
+[[keyboard.bindings]]
+Key = "Q"
+action = "Quit"
+mods = "Control"
+
+[[keyboard.bindings]]
+Key = "N"
+action = "SpawnNewInstance"
+mods = "Control"
+
+[[keyboard.bindings]]
+Key = "C"
+chars = "\u0003"
+mods = "Control|Shift"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "None"
+opacity = 0.8
+
+[window.dimensions]
+columns = 100
+lines = 24

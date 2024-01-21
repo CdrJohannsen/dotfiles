@@ -1,0 +1,21 @@
+ignore-empty-password
+
+image=~/.config/gtklock/ball_blocks_orange_blur.png
+bs-hl-color=DD5500
+# indicator-idle-visible
+indicator-radius=50
+indicator-thickness=5
+# indicator-y-position=900
+inside-color=201000a0
+inside-clear-color=201000a0
+inside-ver-color=201000a0
+inside-wrong-color=401000a0
+key-hl-color=F5C211
+line-uses-ring
+ring-color=080200
+ring-clear-color=080200
+ring-ver-color=DD8800
+ring-wrong-color=541F00
+seperator-color=080200
+
+line-uses-inside

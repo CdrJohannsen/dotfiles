@@ -1,0 +1,60 @@
+*{
+    outline-width: 0px;
+    outline: none;
+}
+
+button, label, image {
+    background: none;
+    border-style: none;
+    box-shadow: none;
+    color: #999;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+}
+
+button {
+    padding: 5px;
+    margin: 20px;
+    text-shadow: none;
+    min-width: 150px;
+    box-shadow: none;
+    outline: 0;
+}
+
+button:hover {
+    background-color: rgba (255, 255, 255, 0.1);
+    outline: 0;
+}
+
+button:focus {
+    box-shadow: 0 0 10px;
+    outline: 0px transparent;
+}
+
+button:checked {
+    background-color: rgba (255, 255, 255, 0.1);
+    outline: 0;
+}
+button.focus-visible {
+    padding: 20;
+}
+
+#searchbox {
+    background: none;
+    border-color: #999;
+    color: #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+#separator {
+    background-color: rgba(200, 200, 200, 0.5);
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+#description {
+    margin-bottom: 20px
+}

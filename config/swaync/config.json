@@ -44,7 +44,7 @@
       },
       "make-spotify-transient": {
           "state": "transient",
-          "desktop_entry": "com.spotify.Client"
+          "desktop-entry": "com.spotify.Client"
       }
   },
   "widgets":[   "inhibitors",

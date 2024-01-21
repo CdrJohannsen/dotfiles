@@ -104,7 +104,6 @@ misc {
     mouse_move_enables_dpms=1
     key_press_enables_dpms=1
     layers_hog_keyboard_focus=1
-    force_default_wallpaper=0
 }
 
 dwindle {
@@ -147,7 +146,7 @@ bind=SUPER,Q,killactive
 bind=SUPER,T,exec,alacritty
 bind=SUPER_SHIFT,Y,exit,
 bind=SUPER_SHIFT,C,exec,hyprctl reload
-bind=SUPER_CTRL,C,exec,hyprpicker -f hex -a
+bind=SUPER_CTRL,C,exec,hyprpicker -f hex
 bind=CTRLALT,delete,exec,shutdown now
 bind=CTRLALT,backspace,exec,nwg-bar
 bind=SUPER,W,exec,firefox
@@ -258,9 +257,7 @@ windowrule=idleinhibit always,firefox
 windowrule=workspace 2,^(.*inecraft.*)$
 windowrule=workspace 2,^(.*Steam.*)$
 windowrule=workspace 2,^(.*steam.*)$
-windowrule=workspace 2,^(.*cs2.*)$
-windowrule=tile,^(.*cs2.*)$
-windowrule=moveintogroup 2,^(.*Steam.*)$
+windowrule=workspace 2,^(.*csgo.*)$
 windowrule=moveintogroup 9,thunderbird
 windowrule=fullscreen,Minecraft 1.8.9
 windowrule=forcergbx,org.kde.kdenlive

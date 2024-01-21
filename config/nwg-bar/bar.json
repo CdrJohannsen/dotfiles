@@ -6,7 +6,7 @@
   },
   {
     "label": "Lock",
-    "exec": "gtklock",
+    "exec": "swaylock",
     "icon": "/usr/share/nwg-bar/images/system-lock-screen.svg"
   },
   {

@@ -1,5 +1,5 @@
 window {
-    background-color: rgba (57, 37, 20, 0.22);
+    background-color: rgba (37, 57, 57, 0.22);
     color: #eeeeee;
 }
 
@@ -13,12 +13,12 @@ button, image {
     border: none;
 }
 button:focus {
-    background-color: rgba (255, 235, 215, 0.1);
+    background-color: rgba (225, 255, 255, 0.1);
     border: none;
     outline: none;
 }
 button:hover {
-    background-color: rgba (255, 235, 215, 0.1)
+    background-color: rgba (225, 255, 255, 0.1)
 }
 
 /* in case you wanted to give category buttons a different look */
