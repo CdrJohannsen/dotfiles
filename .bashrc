@@ -66,10 +66,12 @@ if [ $TERM == "linux" ]; then
     setfont /usr/lib/kbd/consolefonts/ter-h16n.psf.gz
 fi
 
+( echo -en "\x1b[H" && echo & (fastfetch --pipe false)| awk '{printf("\r %s\n", $0)}')
+
 if [ $TERM != "linux" ]; then
     eval "$(starship init bash)"
 fi
 
 #startup
 #cat ~/.gnu_linux
-fortune -s | cowsay
+# fortune -s | cowsay

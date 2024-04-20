@@ -7,4 +7,4 @@ hyprpaper &
 nwg-drawer -r -ovl -nocats -spacing 50 -nofs &
 gnome-clocks --gapplication-service &
 /usr/libexec/polkit-gnome-authentication-agent-1 &
-wl-paste -t text --watch clipman store --no-persist &
+wl-paste -p --watch clipman store --no-persist &
