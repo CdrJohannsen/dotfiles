@@ -2,4 +2,4 @@
 My dotfiles
 
 ## Screenshot
-![Screenshot](green_blue_rice.png)
+![Screenshot](orange_rice.png)
