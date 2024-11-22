@@ -9,7 +9,7 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local conf = require("nvchad.configs.lspconfig")
-            local servers = { "html", "cssls", "tsserver", "clangd", "pyright" }
+            local servers = { "html", "cssls", "tsserver", "clangd", "pyright", "cmake", "rust_analyzer" }
 
             for _, lsp in ipairs(servers) do
                 require("lspconfig")[lsp].setup({
@@ -34,7 +34,7 @@ return {
     {
         "nvim-tree/nvim-tree.lua",
         opts = {
-            git = { enable = true },
+            git = { enable = false },
         },
     },
     {
@@ -46,7 +46,7 @@ return {
         dependencies = {
             "mfussenegger/nvim-dap",
             "rcarriga/nvim-dap-ui",
-            "nvim-neotest/nvim-nio"
+            "nvim-neotest/nvim-nio",
         },
         config = function(_, opts)
             local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
@@ -124,6 +124,20 @@ return {
                 "<cmd>MCstart<cr>",
                 desc = "Create a selection for selected text or word under the cursor",
             },
+        },
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false, -- Recommended
+        -- ft = "markdown" -- If you decide to lazy-load anyway
+
+        dependencies = {
+            -- You will not need this if you installed the
+            -- parsers manually
+            -- Or if the parsers are in your $RUNTIMEPATH
+            "nvim-treesitter/nvim-treesitter",
+
+            "nvim-tree/nvim-web-devicons",
         },
     },
 }

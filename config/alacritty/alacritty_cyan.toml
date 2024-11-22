@@ -1,3 +1,4 @@
+[general]
 live_config_reload = true
 
 [colors]
@@ -60,6 +61,11 @@ mods = "Control"
 [[keyboard.bindings]]
 Key = "C"
 chars = "\u0003"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+Key = "V"
+chars = "\u0016"
 mods = "Control|Shift"
 
 [scrolling]

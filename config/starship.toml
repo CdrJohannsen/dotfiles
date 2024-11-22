@@ -43,5 +43,8 @@ format = "[${symbol}]($style)"
 [c]
 format = "[${symbol}]($style)"
 
+[lua]
+format = "[${symbol}]($style)"
+
 [cmake]
 disabled = true
