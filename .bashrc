@@ -74,3 +74,4 @@ fi
 
 #startup
 date +"%R" | figlet -f future | lolcat -b -g f5c211:dd5500 -h 1 -f | sed -e "s/^/$(printf '%.0s ' $(seq $(expr $(expr `tput cols` / 2) - 6)))/" | sed -r "/^\s*$/d" && echo -en "\r\x1b[2K"
+. "$HOME/.cargo/env"

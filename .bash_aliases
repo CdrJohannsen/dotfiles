@@ -1,4 +1,4 @@
-alias update='sudo dnf upgrade && flatpak upgrade'
+alias update='sudo dnf upgrade --refresh && flatpak upgrade'
 alias c=clear
 alias ls='eza -A --color=auto --group-directories-first -h'
 alias lock='gtklock & systemctl suspend'
