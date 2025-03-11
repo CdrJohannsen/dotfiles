@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-swaylock & systemctl suspend && killall openrgb && openrgb
+loginctl lock-session & systemctl suspend && killall openrgb #&& openrgb --startminimized

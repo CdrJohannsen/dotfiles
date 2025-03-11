@@ -27,29 +27,73 @@
   "hide-on-action": true,
   "script-fail-notify": true,
   "notification-visibility": {
-      "make-bot-transient": {
-          "state": "transient",
-          "app-name": "discord",
-          "summary": ".*Musik Bot .*",
-          "body": ".*"
-      },
-      "mute-empty-bot-messages": {
-          "state": "ignored",
-          "app-name": "discord",
-          "summary": ".*Musik Bot .*"
-      },
-      "make-rhythmbox-transient": {
-          "state": "transient",
-          "app-name": "Rhythmbox"
-      },
-      "make-spotify-transient": {
-          "state": "transient",
-          "desktop-entry": "com.spotify.Client"
-      }
+    "make-bot-transient": {
+      "state": "transient",
+      "desktop_entry": "com.discordapp.Discord",
+      "summary": ".*Musik Bot .*",
+      "body": ".*"
+    },
+    "mute-empty-bot-messages": {
+      "state": "ignored",
+      "desktop_entry": "com.discordapp.Discord",
+      "summary": ".*Musik Bot .*"
+    },
+    "make-rhythmbox-transient": {
+      "state": "transient",
+      "app-name": "Rhythmbox"
+    },
+    "make-spotify-transient": {
+      "state": "transient",
+      "desktop-entry": "com.spotify.Client"
+    }
   },
-  "widgets":[   "inhibitors",
-                "title",
-                "notifications",
-                "mpris",
-                "volume"]
+  "widgets": [
+    "inhibitors",
+    "title",
+    "dnd",
+    "notifications",
+    "mpris",
+    "volume",
+    "buttons-grid"
+  ],
+  "widget-config": {
+    "volume": {
+      "label": "",
+      "show-per-app": true,
+      "expand-button-label": "🡅",
+      "collapse-button-label": "🡇"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰐥",
+          "command": "systemctl poweroff"
+        },
+        {
+          "label": "󰜉",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "󰌾",
+          "command": "loginctl lock-session"
+        },
+        {
+          "label": "󰍃",
+          "command": "wayland-logout"
+        },
+        {
+          "label": "󰤄",
+          "command": "$HOME/.config/nwg-launchers/nwgbar/suspend.sh"
+        },
+        {
+          "label": "󰕾",
+          "command": "swayosd-client --output-volume mute-toggle"
+        },
+        {
+          "label": "󰍬",
+          "command": "swayosd-client --input-volume mute-toggle"
+        }
+      ]
+    }
+  }
 }

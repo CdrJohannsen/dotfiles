@@ -33,17 +33,49 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# man
+export MANPAGER="nvim +Man!" # Not really an alias...
+
 # history
 HISTSIZE=1000000
 HISTFILESIZE=100000000
+export HISTCONTROL=ignoredups
 
 # ranger
 export VISUAL=nvim;
 export EDITOR=nvim;
 
+# cargo
+export CARGO_HOME="$HOME"/.local/share/cargo
+. "$CARGO_HOME/env"
+
+# rustup
+export RUSTUP_HOME="$HOME"/.local/share/rustup
+
+# java
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$HOME"/.config/java
+export _JAVA_OPTIONS="$_JAVA_OPTIONS -Djavafx.cachedir="$HOME"/.cache/openjfx"
+
+# platformio
+export PLATFORMIO_CORE_DIR="$HOME"/.local/share/platformio
+
+# TeX Live
+export TEXMFHOME=$HOME/.local/share/texmf
+export TEXMFVAR=$HOME/.cache/texlive/texmf-var
+export TEXMFCONFIG=$HOME/.config/texlive/texmf-config
+
+# go
+export GOPATH="$HOME"/.local/share/go
+export GOMODCACHE="$HOME"/.cache/go/mod
+
+# python
+export PYTHON_HISTORY=$HOME/.local/state/python_history
+
+# sqlite
+export SQLITE_HISTORY=$HOME/.local/share/sqlite_history
+
+
 # colors
-
-
 if [ $TERM == "linux" ]; then
     echo -en "\e]P0000000" #black
     echo -en "\e]P1D75F5F" #darkred
@@ -66,7 +98,6 @@ if [ $TERM == "linux" ]; then
     setfont /usr/lib/kbd/consolefonts/ter-h16n.psf.gz
 fi
 
-# ( echo -en "\x1b[H" && echo & (fastfetch --pipe false)| awk '{printf("\r %s\n", $0)}')
 
 if [ $TERM != "linux" ]; then
     eval "$(starship init bash)"
@@ -74,4 +105,3 @@ fi
 
 #startup
 date +"%R" | figlet -f future | lolcat -b -g f5c211:dd5500 -h 1 -f | sed -e "s/^/$(printf '%.0s ' $(seq $(expr $(expr `tput cols` / 2) - 6)))/" | sed -r "/^\s*$/d" && echo -en "\r\x1b[2K"
-. "$HOME/.cargo/env"

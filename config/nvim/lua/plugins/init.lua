@@ -9,7 +9,8 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local conf = require("nvchad.configs.lspconfig")
-            local servers = { "html", "cssls", "tsserver", "clangd", "pyright", "cmake", "rust_analyzer" }
+            local servers =
+                { "html", "cssls", "clangd", "pyright", "cmake", "rust_analyzer", "jdtls" }
 
             for _, lsp in ipairs(servers) do
                 require("lspconfig")[lsp].setup({
