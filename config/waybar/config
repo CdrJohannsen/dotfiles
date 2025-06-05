@@ -200,7 +200,7 @@
   "custom/music": {
     "format": " {}",
     "tooltip": true,
-    "exec": "playerctl metadata -F --format '{\"text\":\"{{title}}\", \"tooltip\": \"{{artist}} - {{default(album,\"§§§\")}}\"}' | sed -u -e 's/.mp3//g' -e 's/ - Unknown//g' -e 's/ - §§§//g'",
+    "exec": "playerctl metadata -F --format '{\"text\":\"{{trunc(title,40)}}\", \"tooltip\": \"{{artist}} - {{default(album,\"§§§\")}}\"}' | sed -u -e 's/.mp3//g' -e 's/ - Unknown//g' -e 's/ - §§§//g'",
     "on-scroll-up": "amixer set Master 5%+",
     "on-scroll-down": "amixer set Master 5%-",
     "on-click": "playerctl play-pause",

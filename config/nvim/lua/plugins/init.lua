@@ -9,8 +9,7 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local conf = require("nvchad.configs.lspconfig")
-            local servers =
-                { "html", "cssls", "clangd", "pyright", "cmake", "rust_analyzer", "jdtls" }
+            local servers = { "html", "cssls", "clangd", "pyright", "cmake", "rust_analyzer", "jdtls" }
 
             for _, lsp in ipairs(servers) do
                 require("lspconfig")[lsp].setup({
@@ -111,23 +110,6 @@ return {
     },
     -- lazy.nvim:
     {
-        "smoka7/multicursors.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "smoka7/hydra.nvim",
-        },
-        opts = {},
-        cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
-        keys = {
-            {
-                mode = { "v", "n" },
-                "<Leader>m",
-                "<cmd>MCstart<cr>",
-                desc = "Create a selection for selected text or word under the cursor",
-            },
-        },
-    },
-    {
         "OXY2DEV/markview.nvim",
         lazy = false, -- Recommended
         -- ft = "markdown" -- If you decide to lazy-load anyway
@@ -140,5 +122,47 @@ return {
 
             "nvim-tree/nvim-web-devicons",
         },
+    },
+    {
+        "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+        ft = {
+            -- Tested and working
+            "cs",
+            "python",
+            "cpp",
+            "c",
+            "java",
+        },
+        lazy = true,
+        autostart=true,
+        config = function()
+            require("sonarlint").setup({
+                server = {
+                    cmd = {
+                        "sonarlint-language-server",
+                        -- Ensure that sonarlint-language-server uses stdio channel
+                        "-stdio",
+                        "-analyzers",
+                        -- paths to the analyzers you need, using those for python and java in this example
+                        vim.fn.expand("~/.local/share/nvim/mason/share/sonarlint-analyzers/sonarpython.jar"),
+                        vim.fn.expand("~/.local/share/nvim/mason/share/sonarlint-analyzers/sonarcfamily.jar"),
+                        vim.fn.expand("~/.local/share/nvim/mason/share/sonarlint-analyzers/sonarjava.jar"),
+                    },
+                    settings = {
+                        sonarlint = {
+                            pathToCompileCommands = "build/compile_commands.json",
+                        },
+                    },
+                },
+                filetypes = {
+                    -- Tested and working
+                    "cs",
+                    "python",
+                    "cpp",
+                    "c",
+                    "java",
+                },
+            })
+        end,
     },
 }
