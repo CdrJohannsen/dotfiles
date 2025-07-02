@@ -16,8 +16,8 @@ if [ -f /tmp/color_mode ]; then
     args+="keyword group:col.border_inactive 0xa095b5ff ; "
     args+="keyword group:groupbar:col.active 0xa055ff60 ; "
     args+="keyword group:groupbar:col.inactive 0xa095b5ff ; "
-    args+="keyword decoration:col.shadow 0xff55e5e8 ; "
-    args+="keyword decoration:col.shadow_inactive 0xff55a5e8 ; "
+    args+="keyword decoration:shadow:color 0xff55e5e8 ; "
+    args+="keyword decoration:shadow:color_inactive 0xff55a5e8 ; "
 
     hyprctl --batch "$args"
     hyprctl hyprpaper wallpaper "DP-1,~/.config/hypr/wallpapers/circle_green_boden_gray_no_fog.png"
@@ -40,8 +40,8 @@ else
     args+="keyword group:col.border_inactive 0xffffcc00 ; "
     args+="keyword group:groupbar:col.active 0xffffee88 ; "
     args+="keyword group:groupbar:col.inactive 0xffffcc00 ; "
-    args+="keyword decoration:col.shadow 0xffffff00 ; "
-    args+="keyword decoration:col.shadow_inactive 0xffdd9900 ; "
+    args+="keyword decoration:shadow:color 0xffffff00 ; "
+    args+="keyword decoration:shadow:color_inactive 0xffdd9900 ; "
 
     hyprctl --batch "$args"
     hyprctl hyprpaper wallpaper "DP-1,~/.config/hypr/wallpapers/ball_blocks_orange.png"

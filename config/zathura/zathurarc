@@ -21,10 +21,10 @@ set index-active-fg "#ffffff"
 set index-active-bg "rgba(229, 165, 10,0.5)"
 
 set recolor-darkcolor "#ffffff"
-set recolor-lightcolor "#080200"
+set recolor-lightcolor "rgba(8, 2, 0,0.0)"
 
 set default-fg "#ffffff"
-set default-bg "#080200"
+set default-bg "rgba(8, 2, 0, 0.7)"
 
 set inputbar-fg "#ffffff"
 set inputbar-bg "#080200"
