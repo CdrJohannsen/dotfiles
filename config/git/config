@@ -1,6 +1,12 @@
+[credential]
+	helper = store
 [init]
     defaultBranch = main
 [alias]
     ac="!f() { git add . && git commit -m \"$1\"; }; f"
 [rerere]
 	enabled = true
+[submodule]
+    recurse = true
+[push]
+    recurseSubmodules = no

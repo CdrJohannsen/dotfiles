@@ -1,7 +1,7 @@
 [
   {
     "label": "Suspend",
-    "exec": "/home/cdr-johannsen/.config/nwg-launchers/nwgbar/suspend.sh",
+    "exec": "systemctl suspend",
     "icon": "/usr/share/nwg-bar/images/system-suspend.svg"
   },
   {

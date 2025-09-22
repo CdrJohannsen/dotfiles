@@ -83,7 +83,7 @@
         },
         {
           "label": "󰤄",
-          "command": "$HOME/.config/nwg-launchers/nwgbar/suspend.sh"
+          "command": "systemctl suspend"
         },
         {
           "label": "󰕾",

@@ -59,6 +59,15 @@ opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.syntax = "enable"
 
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldmethod = "expr"
+opt.foldlevel = 999
+opt.foldtext = "getline(v:foldstart)"
+opt.fillchars = "foldclose:,foldopen:,foldsep: ,fold: "
+opt.foldcolumn = "auto:1"
+-- opt.statuscolumn =
+-- '%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " }%=%l%s'
+
 vim.filetype.add({
     pattern = {
         [".*/hypr.*%.conf"] = "hyprlang",
@@ -76,10 +85,19 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    local hl = "DiagnosticSign" .. type
+    -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 vim.diagnostic.config({
-  severity_sort = true,
+    severity_sort = true,
+    virtual_text = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "󰅚 ",
+            [vim.diagnostic.severity.WARN] = "󰀪 ",
+            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.HINT] = "󰌶 ",
+        },
+    },
 })

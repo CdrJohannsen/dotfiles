@@ -19,10 +19,12 @@ M.base46 = {
     },
 }
 
-M.plugins = { ["hrsh7th/nvim-cmp"] = {
-    override_options = function()
-        return require("configs.cmp")
-    end,
-} }
+M.plugins = {
+    ["hrsh7th/nvim-cmp"] = {
+        override_options = function()
+            return require("configs.cmp")
+        end,
+    },
+}
 
 return M
