@@ -39,6 +39,7 @@ style = "blue bold"
 
 [rust]
 format = "[${symbol}]($style)"
+symbol = " "
 
 [c]
 format = "[${symbol}]($style)"

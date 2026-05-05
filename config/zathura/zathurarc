@@ -3,6 +3,8 @@ set selection-notification false
 set guioptions ""
 map </> search forward
 map <KPDivide> search forward
+set window-width 300
+set window-height 424
 
 
 set highlight-color "rgba(229, 165, 10,0.5)"
