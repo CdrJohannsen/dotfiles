@@ -7,18 +7,6 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      local conf = require("nvchad.configs.lspconfig")
-      local servers = { "html", "cssls", "clangd", "pyright", "cmake", "rust_analyzer", "jdtls" }
-
-      for _, lsp in ipairs(servers) do
-        require("lspconfig")[lsp].setup({
-          on_attach = conf.on_attach,
-          capabilities = conf.capabilities,
-          on_init = conf.on_init,
-        })
-      end
-    end,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -196,6 +184,16 @@ return {
   },
   {
     "lambdalisue/vim-suda",
+    lazy = false,
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "^4.0.0", -- Use for stability; omit to use `main` branch for the latest features
     lazy = false,
   },
 }

@@ -5,8 +5,8 @@ vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-    local repo = "https://github.com/folke/lazy.nvim.git"
-    vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -15,17 +15,17 @@ local lazy_config = require("configs.lazy")
 
 -- load plugins
 require("lazy").setup({
-    {
-        "NvChad/NvChad",
-        lazy = false,
-        branch = "v2.5",
-        import = "nvchad.plugins",
-        config = function()
-            require("options")
-        end,
-    },
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+    config = function()
+      require("options")
+    end,
+  },
 
-    { import = "plugins" },
+  { import = "plugins" },
 }, lazy_config)
 
 -- load theme
@@ -35,14 +35,14 @@ dofile(vim.g.base46_cache .. "statusline")
 require("nvchad.autocmds")
 
 vim.schedule(function()
-    require("mappings")
+  require("mappings")
 end)
 
 -- Auto resize panes when resizing nvim window
 local autocmd = vim.api.nvim_create_autocmd
 autocmd("VimResized", {
-    pattern = "*",
-    command = "tabdo wincmd =",
+  pattern = "*",
+  command = "tabdo wincmd =",
 })
 
 local opt = vim.opt
@@ -69,35 +69,41 @@ opt.foldcolumn = "auto:1"
 -- '%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " }%=%l%s'
 
 vim.filetype.add({
-    pattern = {
-        [".*/hypr.*%.conf"] = "hyprlang",
-        ["*.frag,*.vert,*.fp,*.vp,*.glsl"] = "glsl",
-        ["~/.config/waybar/config"] = "json",
-    },
+  pattern = {
+    [".*/hypr.*%.conf"] = "hyprlang",
+    ["*.frag,*.vert,*.fp,*.vp,*.glsl"] = "glsl",
+    ["~/.config/waybar/config"] = "json",
+    [".*.brf"] = "brf",
+  },
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "hyprlang",
-    callback = function(event)
-        vim.bo[event.buf].commentstring = "# %s"
-    end,
+  pattern = "hyprlang",
+  callback = function(event)
+    vim.bo[event.buf].commentstring = "# %s"
+  end,
 })
 
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  local hl = "DiagnosticSign" .. type
+  -- vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 vim.diagnostic.config({
-    severity_sort = true,
-    virtual_text = true,
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "󰅚 ",
-            [vim.diagnostic.severity.WARN] = "󰀪 ",
-            [vim.diagnostic.severity.INFO] = " ",
-            [vim.diagnostic.severity.HINT] = "󰌶 ",
-        },
+  severity_sort = true,
+  virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰅚 ",
+      [vim.diagnostic.severity.WARN] = "󰀪 ",
+      [vim.diagnostic.severity.INFO] = " ",
+      [vim.diagnostic.severity.HINT] = "󰌶 ",
     },
+  },
 })
+
+require("nvchad.configs.lspconfig").defaults()
+
+local servers = { "html", "cssls", "clangd", "pyright", "cmake", "jdtls", "glsl_analyzer", "zls" }
+vim.lsp.enable(servers)

@@ -5,6 +5,7 @@ local options = {
     lua = { "stylua" },
     c = { "clang_format" },
     cpp = { "clang_format" },
+    glsl = { "clang_format" },
     asm = { "asmfmt" },
     python = { "isort", "black" },
     bash = { "beautysh" },
@@ -16,6 +17,7 @@ local options = {
     yaml = { "yq" },
     cmake = { "cmake_format" },
     rust = { "rustfmt" },
+    toml = { "pyproject-fmt" },
   },
 }
 
