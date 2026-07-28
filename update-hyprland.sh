@@ -5,6 +5,7 @@ git clean -ffdx
 git pull --recurse-submodules
 cmake -S . -B ./build
 cmake --build ./build
+sudo cmake --install build
 cd ..
 
 #hyprutils
