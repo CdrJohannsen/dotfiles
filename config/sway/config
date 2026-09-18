@@ -1,0 +1,268 @@
+# vim: foldmethod=marker
+
+include /etc/sway/config.d/*
+
+# Direction keys (as variables in case I want to switch to hjkl)
+set $left Left
+set $down Down
+set $up Up
+set $right Right
+
+# {{{ Input config
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+    pointer_accel 0.4
+    dwt disabled
+    accel_profile flat
+    drag_lock disabled
+}
+#
+input "type:keyboard" {
+    xkb_layout "de(nodeadkeys)"
+    # do not use spaces after comma
+    xkb_options lv3:caps_switch,lv5:rctrl_switch,compose:ralt,nbsp:zwnj2zwj3nb4,keypad:oss,kpdl:commaoss
+    xkb_numlock enabled
+}
+# mouse config
+input "type:pointer" {
+    accel_profile flat
+}
+
+seat * {
+    hide_cursor 20000
+}
+
+# seat seat1 {
+#     attach "1133:49271:Logitech_USB_Optical_Mouse"
+# }
+
+# }}}
+
+# {{{ Output config
+output eDP-1 {
+	mode 1920x1080@60Hz
+    background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
+}
+
+output HDMI-A-1 {
+    mode 1920x1080@144Hz
+    background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
+}
+# }}}
+
+# {{{ Visual config
+gaps inner 10
+gaps outer 0
+smart_gaps on
+
+default_border pixel 2
+default_floating_border pixel 2
+smart_borders no_gaps
+# This is here because floating windows don't get a border for some reason
+for_window [app_id=".*"] border pixel 2
+
+corner_radius 10
+smart_corner_radius enable
+
+blur enable
+blur_radius 5
+blur_passes 1
+
+shadows enable
+shadow_blur_radius 20
+shadow_color #ffff00ff
+shadow_inactive_color #dd9900ff
+
+animation_duration_ms 300
+
+
+set $indicator #dcaa22
+set $active_border #ffeedd
+set $inactive_border #ffddaa
+
+set $background #100a00
+set $foreground $inactive_border
+
+client.focused $active_border $background $foreground $indicator $active_border
+client.unfocused $background $background $foreground $indicator $inactive_border
+client.focused_inactive  $inactive_border $background $foreground $indicator $inactive_border
+# }}}
+
+mouse_warping  container
+focus_follows_mouse no
+primary_selection disabled
+
+
+bindsym Super+Shift+c reload
+bindsym Super+Shift+y exec swaymsg exit
+
+# {{{ Exec keybinds
+bindsym Super+t exec alacritty
+bindsym Super+w exec firefox
+bindsym Super+period exec gnome-characters
+bindsym Super+shift+t exec gnome-calculator
+bindsym Super+Ctrl+c exec grimpicker -c
+# shutdown
+bindsym Ctrl+Alt+Delete exec shutdown now
+bindsym Ctrl+Alt+Backspace exec nwg-bar
+bindsym Super+n exec swaync-client -t
+bindsym Super+l exec loginctl lock-session
+
+
+# Kill focused widow
+bindsym Super+q kill
+
+# Start your launcher
+set $menu killall wofi || wofi
+bindsym --release Super_L exec $menu
+bindsym --release Super_R exec $menu
+
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume +1
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -1
+bindsym Super+F4 exec swayosd-client --input-volume mute-toggle
+bindsym XF86AudioNext exec swayosd-client --playerctl next
+bindsym XF86AudioPrev exec swayosd-client --playerctl previous
+bindsym Ctrl+XF86AudioNext exec playerctl position 5+
+bindsym Ctrl+XF86AudioPrev exec playerctl position 5-
+bindsym Ctrl+Shift+XF86AudioNext exec playerctl position 20+
+bindsym Ctrl+Shift+XF86AudioPrev exec playerctl position 20-
+bindsym XF86AudioPlay exec swayosd-client --playerctl play-pause
+bindsym XF86AudioStop exec swayosd-client --playerctl stop
+bindsym Num_Lock exec sleep 0.1 && swayosd-client --num-lock
+bindsym Super+Ctrl+$up exec swayosd-client --brightness +10
+bindsym Super+Ctrl+$down exec swayosd-client --brightness -10
+
+bindsym Super+Shift+s exec grimshot --notify copy area
+bindsym print exec grimshot --notify copy active
+bindsym Super+Print exec grimshot --notify copy output
+
+bindsym Super+d exec ~/Documents/Coding/Python/Translator/main.py
+# }}}
+
+# {{{ Nav keybinds
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
+
+bindgesture swipe:4:up move up 200
+bindgesture swipe:4:down move down 200
+bindgesture swipe:4:left move left 200
+bindgesture swipe:4:right move right 200
+
+bindgesture pinch:3:inward floating enable
+bindgesture pinch:3:outward floating disable
+
+
+floating_modifier Super normal
+
+# Moving around:
+# Move your focus around
+bindsym Super+$left focus left
+bindsym Super+$down focus down
+bindsym Super+$up focus up
+bindsym Super+$right focus right
+# Move focus with Tab
+bindsym Super+tab focus next
+bindsym Super+shift+tab focus prev
+# move windows
+bindsym Super+shift+$left move left
+bindsym Super+shift+$down move down
+bindsym Super+shift+$up move up
+bindsym Super+shift+$right move right
+
+# Workspaces:
+# Switch to workspace
+bindsym Super+1 workspace 1
+bindsym Super+2 workspace 2
+bindsym Super+3 workspace 3
+bindsym Super+4 workspace 4
+bindsym Super+5 workspace 5
+bindsym Super+6 workspace 6
+bindsym Super+7 workspace 7
+bindsym Super+8 workspace 8
+bindsym Super+9 workspace 9
+
+# Move focused container to workspace
+bindsym Super+Shift+1 move container to workspace 1, workspace 1
+bindsym Super+Shift+2 move container to workspace 2, workspace 2
+bindsym Super+Shift+3 move container to workspace 3, workspace 3
+bindsym Super+Shift+4 move container to workspace 4, workspace 4
+bindsym Super+Shift+5 move container to workspace 5, workspace 4
+bindsym Super+Shift+6 move container to workspace 6, workspace 6
+bindsym Super+Shift+7 move container to workspace 7, workspace 7
+bindsym Super+Shift+8 move container to workspace 8, workspace 8
+bindsym Super+Shift+9 move container to workspace 9, workspace 9
+
+# move to another workspace
+bindsym Super+ctrl+Right move workspace to output right
+bindsym Super+Ctrl+Left move workspace to output left
+
+bindsym Super+Shift+0 move scratchpad
+bindsym Super+0 scratchpad show
+# }}}
+
+# {{{ Layout keybinds
+bindsym Super+f fullscreen
+bindsym Super+Shift+f fullscreen global
+
+bindsym Super+e layout toggle split tabbed
+
+# toggle layout
+bindsym Super+a focus parent, layout toggle splitv splith, focus child
+
+bindsym Super+space floating toggle
+
+# Resizing containers:
+mode "resize" {
+    bindsym $right resize grow width 24px
+    bindsym $down resize shrink height 24px
+    bindsym $up resize grow height 24px
+    bindsym $left resize shrink width 24px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Super+v mode "resize"
+# }}}
+
+# Status Bar:
+bar {
+    swaybar_command waybar
+}
+
+# {{{ Position configuration
+# Workspace
+workspace 9 output eDP-1
+workspace 8 output eDP-1
+assign [app_id="discord"] workspace 9
+assign [app_id="org.signal.Signal"] workspace 9
+assign [app_id="net.thunderbird.Thunderbird"] workspace 9
+assign [app_id="spotify"] workspace 8
+assign [app_id="com.github.wwmm.easyeffects"] workspace 8
+
+for_window [workspace="9"] layout tabbed
+for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [class="discord"] inhibit_idle focus
+for_window [class="Ryujinx"] inhibit_idle focus
+for_window [class="org.mozilla.firefox"] inhibit_idle fullscreen
+# }}}
+
+# Autostart
+exec GTK_THEME=Adwaita:dark
+
+exec swayidle -w \
+          timeout 300 'loginctl lock-session'  \
+          timeout 400 'swaymsg "output * power off"' \
+          timeout 500 'systemctl suspend' \
+          resume 'swaymsg "output * power on"' \
+          before-sleep 'loginctl lock-session' \
+          lock 'swaylock -f'
+exec swaync
+exec wlsunset -l 50 -L 10
+exec wl-paste -p --watch clipman store --no-persist
+exec swayosd-server
+exec_always autotiling
+
+focus floating

@@ -7,6 +7,7 @@
   "margin-right": 0,
   "spacing": 0,
   "height": 32,
+  "reload_style_on_change": true,
   "modules-left": [
     "sway/workspaces",
     "hyprland/workspaces",
@@ -19,18 +20,56 @@
     "custom/notification",
     "cpu",
     "memory",
-    "pulseaudio",
-    "battery",
+    "group/audio",
+    "group/power",
     "clock"
   ],
-  "custom/logo": {
-    "format": ""
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "battery",
+      "idle_inhibitor",
+      "power-profiles-daemon"
+    ],
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": false
+    }
   },
-  "cava":{
-      "cava_config": "../cava/config"
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip": true,
+    "tooltip-format":"{icon} {profile}",
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": " ",
+      "power-saver": " "
+    }
   },
-  "sway/window": {
-    "max-length": 50
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    },
+    "timeout": 5
+  },
+  "group/audio": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider#out"
+    ],
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": false
+    }
+  },
+  "pulseaudio/slider#out": {
+    "orientation": "horizontal",
+    "expand": true,
+    "unmute-on-volume-change": false
   },
   "hyprland/workspaces": {
     "format": "{name}",
@@ -40,13 +79,9 @@
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1"
   },
-  "tray": {
-    "icon-size": 15,
-    "show-passive-items": true
-  },
   "battery": {
-    "format": "{capacity}%",
-    "format-discharging": "{capacity}%",
+    "format": "{icon} ",
+    "format-discharging": "{icon} ",
     "format-icons": [
       "",
       "",
@@ -55,6 +90,7 @@
       ""
     ],
     "format-full": "",
+    "tooltip-format": "{capacity}% {timeTo} {power}W",
     "states": {
       "critical": 15
     }
@@ -77,11 +113,16 @@
         "weekdays": "<span color='#ffffff'><b>{}</b></span>",
         "today": "<span background='#ffffff' color='#dd5500'><b><u>{}</u></b></span>"
       }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
     }
   },
   "cpu": {
     "interval": 1,
-    "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11} ",
+    "format": "{icon0} {icon1} {icon2} {icon3}",
     "format-icons": [
       "▁",
       "▂",
@@ -96,40 +137,6 @@
   "memory": {
     "format": "{}% ",
     "interval": 1,
-    "format-icons": [
-      "▏",
-      "▎",
-      "▍",
-      "▌",
-      "▋",
-      "▊",
-      "▉",
-      "█",
-      "█▏",
-      "█▎",
-      "█▍",
-      "█▌",
-      "█▋",
-      "█▊",
-      "█▉",
-      "██",
-      "██▏",
-      "██▎",
-      "██▍",
-      "██▌",
-      "██▋",
-      "██▊",
-      "██▉",
-      "███",
-      "██▏",
-      "███▎",
-      "███▍",
-      "███▌",
-      "███▋",
-      "███▊",
-      "███▉",
-      "████"
-    ],
     "min-length": 5
   },
   "pulseaudio": {
@@ -167,35 +174,6 @@
     "on-click-right": "swaync-client -d -sw",
     "on-click-middle": "swaync-client -C -sw",
     "escape": true
-  },
-  "custom/music_prev": {
-    "format": "⏮",
-    "tooltip": false,
-    "on-click": "playerctl previous"
-  },
-  "custom/music_back": {
-    "format": "⏴",
-    "tooltip": false,
-    "on-click": "playerctl position 10-"
-  },
-  "custom/music_playing": {
-    "format": "{}",
-    "tooltip": false,
-    "interval": 5,
-    "exec": "$HOME/.config/waybar/modules/music_playing.sh",
-    "return-type": "json",
-    "on-click": "playerctl play-pause",
-    "on-click-middle": "playerctl stop"
-  },
-  "custom/music_forward": {
-    "format": "⏵",
-    "tooltip": false,
-    "on-click": "playerctl position 10+"
-  },
-  "custom/music_next": {
-    "format": "⏭",
-    "tooltip": false,
-    "on-click": "playerctl next"
   },
   "custom/music": {
     "format": " {}",
