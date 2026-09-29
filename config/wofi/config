@@ -14,6 +14,5 @@ allow_images=true
 image_size=40
 gtk_dark=true
 term=alacritty
-matching=fuzzy
 parse_search=true
 close_on_focus_loss=true

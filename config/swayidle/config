@@ -1,0 +1,5 @@
+timeout 300 'loginctl lock-session'
+timeout 400 'systemctl suspend'
+after-resume 'killall openrgb && openrgb --startminimized'
+before-sleep 'pidof gtklock || gtklock -d'
+lock 'pidof gtklock || gtklock -d'

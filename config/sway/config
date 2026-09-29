@@ -27,6 +27,7 @@ input "type:keyboard" {
 # mouse config
 input "type:pointer" {
     accel_profile flat
+    pointer_accel 0.1
 }
 
 seat * {
@@ -47,6 +48,14 @@ output eDP-1 {
 
 output HDMI-A-1 {
     mode 1920x1080@144Hz
+    position 0 0
+    background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
+}
+
+output DP-1 {
+	mode 1920x1080@60Hz
+    position -1080 -420
+    transform 270
     background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
 }
 # }}}
@@ -89,7 +98,7 @@ client.unfocused $background $background $foreground $indicator $inactive_border
 client.focused_inactive  $inactive_border $background $foreground $indicator $inactive_border
 # }}}
 
-mouse_warping  container
+mouse_warping  output
 focus_follows_mouse no
 primary_selection disabled
 
@@ -105,7 +114,7 @@ bindsym Super+shift+t exec gnome-calculator
 bindsym Super+Ctrl+c exec grimpicker -c
 # shutdown
 bindsym Ctrl+Alt+Delete exec shutdown now
-bindsym Ctrl+Alt+Backspace exec nwg-bar
+bindsym Ctrl+Alt+Backspace exec nwgbar -o 0 -s 48
 bindsym Super+n exec swaync-client -t
 bindsym Super+l exec loginctl lock-session
 
@@ -236,6 +245,8 @@ bar {
 # Workspace
 workspace 9 output eDP-1
 workspace 8 output eDP-1
+workspace 9 output DP-1
+workspace 8 output DP-1
 assign [app_id="discord"] workspace 9
 assign [app_id="org.signal.Signal"] workspace 9
 assign [app_id="net.thunderbird.Thunderbird"] workspace 9
@@ -244,21 +255,17 @@ assign [app_id="com.github.wwmm.easyeffects"] workspace 8
 
 for_window [workspace="9"] layout tabbed
 for_window [app_id="org.gnome.Calculator"] floating enable
-for_window [class="discord"] inhibit_idle focus
-for_window [class="Ryujinx"] inhibit_idle focus
-for_window [class="org.mozilla.firefox"] inhibit_idle fullscreen
+for_window [app_id="discord"] inhibit_idle focus
+for_window [app_id="Ryujinx"] inhibit_idle focus
+for_window [app_id=".*"] inhibit_idle fullscreen
+
+for_window [title="Picture-in-Picture"] floating enable, move absolute position -1080 0, resize set width 1080 px height 608 px
 # }}}
 
 # Autostart
 exec GTK_THEME=Adwaita:dark
 
-exec swayidle -w \
-          timeout 300 'loginctl lock-session'  \
-          timeout 400 'swaymsg "output * power off"' \
-          timeout 500 'systemctl suspend' \
-          resume 'swaymsg "output * power on"' \
-          before-sleep 'loginctl lock-session' \
-          lock 'swaylock -f'
+exec swayidle -w
 exec swaync
 exec wlsunset -l 50 -L 10
 exec wl-paste -p --watch clipman store --no-persist
