@@ -1,0 +1,50 @@
+{
+  add_newline = false;
+  line_break = { disabled = true; };
+  character = {
+    success_symbol = "[❯](bold cyan)";
+    error_symbol = "[❯](bold cyan)";
+  };
+  package = { disabled = true; };
+  cmd_duration = { style = "bold cyan"; };
+
+  directory = {
+    truncation_length = 5;
+    truncate_to_repo = false;
+  };
+
+  git_status = { disabled = true; };
+
+  git_branch = { disabled = true; };
+
+  java = {
+    format = "[\${symbol}]($style)";
+    symbol = " ";
+  };
+
+  nodejs = {
+    format = "[\${symbol}]($style)";
+    style = "yellow bold";
+    symbol = " ";
+  };
+
+  python = {
+    format = "[\${symbol}]($style)";
+    symbol = " ";
+    style = "blue bold";
+  };
+
+  nix_shell = {
+    format = "[\\($state \${symbol}\\)]($style)";
+    symbol="󱄅 ";
+    style = "cyan bold";
+  };
+
+  rust = { format = "[\${symbol}]($style)"; };
+
+  c = { format = "[\${symbol}]($style)"; };
+
+  lua = { format = "[\${symbol}]($style)"; };
+
+  cmake = { disabled = true; };
+}

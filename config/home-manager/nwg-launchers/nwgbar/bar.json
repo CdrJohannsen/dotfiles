@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Suspend",
+        "exec": "systemctl suspend",
+        "icon": ".config/nwg-launchers/nwgbar/images/system-suspend.svg"
+    },
+    {
+        "name": "Lock",
+        "exec": "loginctl lock-session",
+        "icon": ".config/nwg-launchers/nwgbar/images/system-lock-screen.svg"
+    },
+    {
+        "name": "Logout",
+        "exec": "wayland-logout",
+        "icon": ".config/nwg-launchers/nwgbar/images/system-log-out.svg"
+    },
+    {
+        "name": "Reboot",
+        "exec": "systemctl reboot",
+        "icon": ".config/nwg-launchers/nwgbar/images/system-reboot.svg"
+    },
+    {
+        "name": "Shutdown",
+        "exec": "shutdown now",
+        "icon": ".config/nwg-launchers/nwgbar/images/system-shutdown.svg"
+    }
+]
