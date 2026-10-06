@@ -4,27 +4,35 @@ local M = {}
 local highlights = require("highlights")
 
 M.base46 = {
-    theme = "chocolate",
-    theme_toggle = { "radium", "chocolate" },
+  theme = "chocolate",
+  theme_toggle = { "radium", "chocolate" },
 
-    hl_override = highlights.override,
-    hl_add = highlights.add,
-    transparency = true,
-    statusline = {
-        theme = "default",
-        separator_style = "default",
-    },
-    term = {
-        sizes = { sp = 0.5, vsp = 0.5 },
-    },
+  hl_override = highlights.override,
+  hl_add = highlights.add,
+  transparency = true,
+}
+
+M.ui = {
+  statusline = {
+    theme = "default",
+    separator_style = "default",
+  },
+}
+
+M.term = {
+  sizes = { sp = 0.3, vsp = 0.4 },
+  float = {
+    col = 0.15,
+    width = 0.7,
+  },
 }
 
 M.plugins = {
-    ["hrsh7th/nvim-cmp"] = {
-        override_options = function()
-            return require("configs.cmp")
-        end,
-    },
+  ["hrsh7th/nvim-cmp"] = {
+    override_options = function()
+      return require("configs.cmp")
+    end,
+  },
 }
 
 return M

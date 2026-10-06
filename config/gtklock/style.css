@@ -1,45 +1,45 @@
-#input-field{
-    margin: 10px 65px 0px 0px;
+#input-field {
+  margin: 10px 65px 0px 0px;
 }
 
-#unlock-button{
-    margin: 0px 65px 20px 0px;
-    /* box-shadow: 0px 0px 10px @accent_bg_color; */
+#unlock-button {
+  margin: 0px 65px 20px 0px;
+  /* box-shadow: 0px 0px 10px @accent_bg_color; */
 }
 
 #input-label {
-    color: transparent;
+  color: transparent;
 }
 
-#unlock-button:disabled{
-    margin: 0px 65px 20px 0px;
-    box-shadow: 0px 0px 0px @accent_bg_color;
+#unlock-button:disabled {
+  margin: 0px 65px 20px 0px;
+  box-shadow: 0px 0px 0px @accent_bg_color;
 }
 
-#playerctl-box{
-    background-color: @popover_bg_color;
-    padding: 10px;
-    border-radius: 10px 10px 0px 0px;
+#playerctl-box {
+  background-color: @popover_bg_color;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
 }
 
-#user-image{
-    /* border: solid @accent_bg_color; */
-    /* border-width: 1px; */
-    /* box-shadow: 0px 0px 5px @accent_bg_color; */
-    border-radius: 54px;
-    /* background: @view_bg_color; */
-    padding: 5px;
-    margin:10px 30px;
+#user-image {
+  /* border: solid @accent_bg_color; */
+  /* border-width: 1px; */
+  /* box-shadow: 0px 0px 5px @accent_bg_color; */
+  border-radius: 54px;
+  /* background: @view_bg_color; */
+  padding: 5px;
+  margin: 10px 30px;
 }
 
-button{
-    border:0px;
+button {
+  border: 0px;
 }
 
 window {
-   background-image: url("ball_blocks_orange_blur.png");
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: center;
-   /* background-color: black; */
+  background-image: url("../wallpapers/ball_blocks_orange_blur.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: black; */
 }

@@ -2,7 +2,7 @@
 #copr:erikreider/swayosd
 
 bash-completion-devel
-grimshot
+grim
 swaybg
 wayland-logout
 wofi

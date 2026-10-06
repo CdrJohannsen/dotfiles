@@ -65,6 +65,9 @@ opt.foldlevel = 999
 opt.foldtext = "getline(v:foldstart)"
 opt.fillchars = "foldclose:,foldopen:,foldsep: ,fold: "
 opt.foldcolumn = "auto:1"
+
+vim.api.nvim_set_keymap("v", "P", "pgvy`>", { noremap = true })
+
 -- opt.statuscolumn =
 -- '%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "" : "") : " " }%=%l%s'
 

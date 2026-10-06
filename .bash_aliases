@@ -16,6 +16,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_local_aliases
+fi
+
 batdiff() {
     git diff --name-only --relative --diff-filter=d $1 | xargs bat --diff
 }

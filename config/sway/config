@@ -35,10 +35,6 @@ seat * {
     hide_cursor 20000
 }
 
-# seat seat1 {
-#     attach "1133:49271:Logitech_USB_Optical_Mouse"
-# }
-
 # }}}
 
 # {{{ Output config
@@ -287,5 +283,6 @@ exec /usr/libexec/kf6/polkit-kde-authentication-agent-1 | /usr/libexec/polkit-gn
 exec_always autotiling
 
 include "$(hostname)"
+include private-config
 
 focus floating
