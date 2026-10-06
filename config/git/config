@@ -10,3 +10,5 @@
     recurse = true
 [push]
     recurseSubmodules = no
+[include]
+    path=local_config

@@ -1,0 +1,4 @@
+# vim: ft=swayconfig
+exec ~/.config/sway/autorotate.sh
+exec lisgd
+

@@ -3,19 +3,13 @@
 @define-color module-right-color #dd5500;
 
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
   font-family:
     Roboto Mono Medium,
-    Roboto,
     Helvetica,
     Arial;
   font-size: 14px;
   border-radius: 12px;
   border: none;
-  /*
-    background-color: #1d1f21;
-    background: #1d1f21;
-    */
   background-color: transparent;
   background: transparent;
   margin: 0px 0px 0px 0px;
@@ -159,9 +153,19 @@ tooltip {
 }
 */
 #custom-notification {
-  font-family: "NotoSansMono Nerd Font";
+  font-family: "Font Awesome 7 Free Solid";
   background-color: transparent;
   color: #ffffff;
+}
+
+#custom-osk {
+  font-family: "Font Awesome 7 Free Solid";
+  color: #ffffff;
+  background: @module-right-color;
+  margin: 0px 0px 0px 8px;
+  box-shadow: 0px 0px 7px @module-right-color;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 #custom-music {
@@ -176,7 +180,7 @@ tooltip {
   padding-right: 15px;
   padding-left: 15px;
   /* font-size: 20px; */
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free Solid";
   background: @module-right-color;
 }
 
@@ -195,7 +199,7 @@ tooltip {
   background: @module-right-color;
   box-shadow: 0px 0px 7px @module-right-color;
   margin-right: 8px;
-  font-family: DejaVuSansMono Nerd Font;
+  font-family: "Font Awesome 7 Free Solid";
 }
 #battery.critical {
   color: #ffffff;
@@ -277,7 +281,7 @@ label:focus {
 }
 
 #pulseaudio {
-  font-family: DejaVuSansMono Nerd Font;
+  font-family: "Font Awesome 7 Free Solid";
   color: #ffffff;
   /* background: @module-right-color; */
   /* margin-right: 8px; */
@@ -330,7 +334,7 @@ label:focus {
   box-shadow: 0px 0px 7px @module-right-color;
   color: #ffffff;
   margin-right: 5px;
-  font-family: DejaVuSansMono Nerd Font;
+  font-family: "Font Awesome 7 Free Solid";
 }
 
 #idle_inhibitor {
@@ -338,7 +342,7 @@ label:focus {
   box-shadow: 0px 0px 7px @module-right-color;
   color: #ffffff;
   margin-right: 5px;
-  font-family: DejaVuSansMono Nerd Font;
+  font-family: "Font Awesome 7 Free Solid";
 }
 
 #idle_inhibitor.activated {

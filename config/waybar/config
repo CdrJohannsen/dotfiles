@@ -18,6 +18,7 @@
   ],
   "modules-right": [
     "custom/notification",
+    "custom/osk",
     "cpu",
     "memory",
     "group/audio",
@@ -28,6 +29,7 @@
     "orientation": "horizontal",
     "modules": [
       "battery",
+      "battery#pen",
       "idle_inhibitor",
       "power-profiles-daemon"
     ],
@@ -39,7 +41,7 @@
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip": true,
-    "tooltip-format":"{icon} {profile}",
+    "tooltip-format": "{icon} {profile}",
     "format-icons": {
       "default": "",
       "performance": "",
@@ -50,8 +52,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": " ",
-      "deactivated": " "
+      "activated": "",
+      "deactivated": ""
     },
     "timeout": 5
   },
@@ -80,8 +82,8 @@
     "on-scroll-down": "hyprctl dispatch workspace e+1"
   },
   "battery": {
-    "format": "{icon} ",
-    "format-discharging": "{icon} ",
+    "format": "{icon}",
+    "format-discharging": "{icon}",
     "format-icons": [
       "",
       "",
@@ -91,6 +93,23 @@
     ],
     "format-full": "",
     "tooltip-format": "{capacity}% {timeTo} {power}W",
+    "states": {
+      "critical": 15
+    }
+  },
+  "battery#pen": {
+    "format": "🖊 {icon}",
+    "bat": "wacom_battery_0",
+    "format-discharging": "🖊 {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-full": "",
+    "tooltip-format": "{capacity}%",
     "states": {
       "critical": 15
     }
@@ -122,7 +141,7 @@
   },
   "cpu": {
     "interval": 1,
-    "format": "{icon0} {icon1} {icon2} {icon3}",
+    "format": "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11}",
     "format-icons": [
       "▁",
       "▂",
@@ -141,7 +160,7 @@
   },
   "pulseaudio": {
     "format": "  {icon}  ",
-    "format-muted": "  󰝟  ",
+    "format-muted": "    ",
     "format-icons": [
       "",
       "",
@@ -174,6 +193,14 @@
     "on-click-right": "swaync-client -d -sw",
     "on-click-middle": "swaync-client -C -sw",
     "escape": true
+  },
+  "custom/osk": {
+    "tooltip": false,
+    "format": "{}",
+    "on-click": "killall -34 wvkbd-deskintl",
+    "exec-if": "pgrep wvkbd-deskintl",
+    "exec": "echo ⌨",
+    "signal": 1
   },
   "custom/music": {
     "format": " {}",

@@ -17,6 +17,7 @@ input "type:touchpad" {
     accel_profile flat
     drag_lock disabled
 }
+
 #
 input "type:keyboard" {
     xkb_layout "de(nodeadkeys)"
@@ -41,22 +42,23 @@ seat * {
 # }}}
 
 # {{{ Output config
+output * {
+    background ~/.config/wallpapers/ball_blocks_orange.png fill
+}
+
 output eDP-1 {
 	mode 1920x1080@60Hz
-    background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
 }
 
 output HDMI-A-1 {
     mode 1920x1080@144Hz
     position 0 0
-    background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
 }
 
 output DP-1 {
 	mode 1920x1080@60Hz
     position -1080 -420
     transform 270
-    background ~/.config/hypr/wallpapers/ball_blocks_orange.png fill
 }
 # }}}
 
@@ -109,14 +111,21 @@ bindsym Super+Shift+y exec swaymsg exit
 # {{{ Exec keybinds
 bindsym Super+t exec alacritty
 bindsym Super+w exec firefox
-bindsym Super+period exec gnome-characters
-bindsym Super+shift+t exec gnome-calculator
+bindsym Super+period exec gnome-characters || kcharselect
+bindsym Super+shift+t exec gnome-calculator || kcalc
 bindsym Super+Ctrl+c exec grimpicker -c
+bindsym Super+p exec cliphist list | wofi -S dmenu | cliphist decode | wl-copy
 # shutdown
 bindsym Ctrl+Alt+Delete exec shutdown now
 bindsym Ctrl+Alt+Backspace exec nwgbar -o 0 -s 48
 bindsym Super+n exec swaync-client -t
+bindsym XF86NotificationCenter exec swaync-client -t
 bindsym Super+l exec loginctl lock-session
+
+bindswitch tablet:on exec flock -n /tmp/osk.lock wvkbd-deskintl --auto --no-popup & killall -35 waybar
+bindswitch tablet:off exec killall wvkbd-deskintl && killall -35 waybar
+
+bindswitch lid:on exec systemctl suspend
 
 
 # Kill focused widow
@@ -131,6 +140,7 @@ bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
 bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume +1
 bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -1
 bindsym Super+F4 exec swayosd-client --input-volume mute-toggle
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
 bindsym XF86AudioNext exec swayosd-client --playerctl next
 bindsym XF86AudioPrev exec swayosd-client --playerctl previous
 bindsym Ctrl+XF86AudioNext exec playerctl position 5+
@@ -140,14 +150,15 @@ bindsym Ctrl+Shift+XF86AudioPrev exec playerctl position 20-
 bindsym XF86AudioPlay exec swayosd-client --playerctl play-pause
 bindsym XF86AudioStop exec swayosd-client --playerctl stop
 bindsym Num_Lock exec sleep 0.1 && swayosd-client --num-lock
-bindsym Super+Ctrl+$up exec swayosd-client --brightness +10
-bindsym Super+Ctrl+$down exec swayosd-client --brightness -10
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness +10
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness -10
 
-bindsym Super+Shift+s exec grimshot --notify copy area
-bindsym print exec grimshot --notify copy active
-bindsym Super+Print exec grimshot --notify copy output
+set $screenshot_area grim -g "$(slurp)" - | wl-copy
+bindsym Super+Shift+s exec $screenshot_area
+bindsym XF86SelectiveScreenshot exec $screenshot_area
+bindsym print exec grim - | wl-copy
 
-bindsym Super+d exec ~/Documents/Coding/Python/Translator/main.py
+bindsym Super+d exec ~/Projects/Python/Translator/main.py
 # }}}
 
 # {{{ Nav keybinds
@@ -255,6 +266,8 @@ assign [app_id="com.github.wwmm.easyeffects"] workspace 8
 
 for_window [workspace="9"] layout tabbed
 for_window [app_id="org.gnome.Calculator"] floating enable
+for_window [app_id="org.kde.kcalc"] floating enable
+for_window [app_id="io.github.finefindus.Hieroglyphic"] floating enable
 for_window [app_id="discord"] inhibit_idle focus
 for_window [app_id="Ryujinx"] inhibit_idle focus
 for_window [app_id=".*"] inhibit_idle fullscreen
@@ -268,8 +281,11 @@ exec GTK_THEME=Adwaita:dark
 exec swayidle -w
 exec swaync
 exec wlsunset -l 50 -L 10
-exec wl-paste -p --watch clipman store --no-persist
+exec wl-paste --watch cliphist store
 exec swayosd-server
+exec /usr/libexec/kf6/polkit-kde-authentication-agent-1 | /usr/libexec/polkit-gnome-authentication-agent-1
 exec_always autotiling
+
+include "$(hostname)"
 
 focus floating

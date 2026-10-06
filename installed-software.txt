@@ -1,0 +1,47 @@
+#copr:atim/starship
+#copr:erikreider/swayosd
+
+bash-completion-devel
+grimshot
+swaybg
+wayland-logout
+wofi
+swayosd
+nwg-launchers
+waybar
+SwayNotificationCenter
+SwayNotificationCenter-bash-completion
+toilet
+lolcat
+starship
+eza
+fd
+fzf
+bat
+ripgrep
+neovim
+fastfetch
+alacritty
+cascadia-mono-nf-fonts
+dejavu-sans-mono-fonts
+gtklock
+swayidle
+wlsunset
+wl-clipboard
+cliphist
+qt5ct
+qt6ct
+python3-deepl
+python3-pyftpdlib
+python3-isort
+black
+clang-tools-extra
+
+
+#flatpak:flathub com.github.tchx84.Flatseal
+#flatpak:flathub io.github.flattool.Warehouse
+#flatpak:flathub md.obsidian.Obsidian
+
+#manual:swayfx
+#manual:lisgd
+#manual:wvkbd
