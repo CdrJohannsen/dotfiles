@@ -54,8 +54,7 @@
     "format-icons": {
       "activated": "",
       "deactivated": ""
-    },
-    "timeout": 5
+    }
   },
   "group/audio": {
     "orientation": "horizontal",

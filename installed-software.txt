@@ -1,6 +1,7 @@
 #copr:atim/starship
 #copr:erikreider/swayosd
 
+btop
 bash-completion-devel
 grim
 swaybg

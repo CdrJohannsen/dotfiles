@@ -29,6 +29,31 @@ return {
     "mfussenegger/nvim-dap",
   },
   {
+    "nvim-java/nvim-java",
+    ft = "java",
+    config = function()
+      require("java").setup()
+      vim.lsp.enable("jdtls")
+    end,
+  },
+  -- {
+  --   "mfussenegger/nvim-jdtls",
+  --   ft = "java",
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --     "rcarriga/nvim-dap-ui",
+  --   },
+  --   config = function(_, opts)
+  --     require("dap").configurations.java = {
+  --       {
+  --         name = "Launch",
+  --         request = "Launch",
+  --         type = "java",
+  --       },
+  --     }
+  --   end,
+  -- },
+  {
     "mfussenegger/nvim-dap-python",
     ft = "python",
     dependencies = {
@@ -71,6 +96,7 @@ return {
       handlers = {},
       ensure_installed = {
         "codelldb",
+        -- "javadbg",
       },
     },
   },

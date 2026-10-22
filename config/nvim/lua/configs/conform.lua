@@ -18,6 +18,7 @@ local options = {
     cmake = { "cmake_format" },
     rust = { "rustfmt" },
     toml = { "pyproject-fmt" },
+    java = { "astyle" },
   },
 }
 
@@ -30,4 +31,7 @@ require("conform").formatters.black = {
 }
 require("conform").formatters.clang_format = {
   prepend_args = { "--style=file:/home/cdr-johannsen/.config/.clang-format" },
+}
+require("conform").formatters.astyle = {
+  prepend_args = { "--style=java", "-s2", "--pad-oper", "--pad-comma", "--squeeze-lines=1" },
 }
