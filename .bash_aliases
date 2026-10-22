@@ -1,4 +1,4 @@
-alias update='sudo dnf upgrade --refresh && flatpak upgrade'
+alias update='systemd-inhibit sudo dnf upgrade --refresh && systemd-inhibit flatpak upgrade'
 alias c=clear
 alias ls='eza -A --color=auto --group-directories-first -h'
 alias lock='loginctl lock-sessions'

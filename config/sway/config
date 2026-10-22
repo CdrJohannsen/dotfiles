@@ -44,11 +44,13 @@ output * {
 
 output eDP-1 {
 	mode 1920x1080@60Hz
+    subpixel rgb
 }
 
 output HDMI-A-1 {
     mode 1920x1080@144Hz
     position 0 0
+    subpixel rgb
 }
 
 output DP-1 {
@@ -280,7 +282,7 @@ exec wlsunset -l 50 -L 10
 exec wl-paste --watch cliphist store
 exec swayosd-server
 exec /usr/libexec/kf6/polkit-kde-authentication-agent-1 | /usr/libexec/polkit-gnome-authentication-agent-1
-exec_always autotiling
+exec autotiling
 
 include "$(hostname)"
 include private-config
