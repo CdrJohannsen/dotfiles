@@ -6,6 +6,9 @@ map <KPDivide> search forward
 set window-width 300
 set window-height 424
 
+show-directories true
+show-hidden true
+
 
 set highlight-color "rgba(229, 165, 10,0.5)"
 set highlight-active-color "rgba(245,194,17,0.5)"

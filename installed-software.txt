@@ -37,6 +37,9 @@ python3-pyftpdlib
 python3-isort
 black
 clang-tools-extra
+zathura
+zathura-pdf-poppler
+zathura-bash-completion
 
 
 #flatpak:flathub com.github.tchx84.Flatseal
@@ -46,3 +49,4 @@ clang-tools-extra
 #manual:swayfx
 #manual:lisgd
 #manual:wvkbd
+#manual:gtklock-plugin-parallel-auth

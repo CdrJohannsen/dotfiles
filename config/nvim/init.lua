@@ -108,5 +108,5 @@ vim.diagnostic.config({
 
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "clangd", "pyright", "cmake", "jdtls", "glsl_analyzer", "zls" }
+local servers = { "html", "cssls", "clangd", "pyright", "cmake", "jdtls", "glsl_analyzer", "zls", "qmlls" }
 vim.lsp.enable(servers)

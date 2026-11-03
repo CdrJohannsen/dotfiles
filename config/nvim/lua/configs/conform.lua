@@ -19,6 +19,7 @@ local options = {
     rust = { "rustfmt" },
     toml = { "pyproject-fmt" },
     java = { "astyle" },
+    qml = { "qmlformat" },
   },
 }
 
@@ -34,4 +35,7 @@ require("conform").formatters.clang_format = {
 }
 require("conform").formatters.astyle = {
   prepend_args = { "--style=java", "-s2", "--pad-oper", "--pad-comma", "--squeeze-lines=1" },
+}
+require("conform").formatters.qmlformat = {
+  command = "qmlformat-qt6",
 }
