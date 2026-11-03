@@ -25,19 +25,7 @@
     "group/power",
     "clock"
   ],
-  "group/power": {
-    "orientation": "horizontal",
-    "modules": [
-      "battery",
-      "battery#pen",
-      "idle_inhibitor",
-      "power-profiles-daemon"
-    ],
-    "drawer": {
-      "transition-duration": 300,
-      "transition-left-to-right": false
-    }
-  },
+  "include":"local.jsonc", // This is where group/power needs to be defined
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip": true,
